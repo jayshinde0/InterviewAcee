@@ -1,0 +1,1253 @@
+[
+  
+  {
+    "id": 1,
+    "title": "Two Sum",
+    "category": "Array",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 2,
+    "title": "Best Time to Buy and Sell Stock",
+    "category": "Array",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 3,
+    "title": "Contains Duplicate",
+    "category": "Array",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 4,
+    "title": "Move Zeroes",
+    "category": "Array",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 5,
+    "title": "Intersection of Two Arrays II",
+    "category": "Array",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 6,
+    "title": "Maximum Subarray",
+    "category": "Array",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 7,
+    "title": "Product of Array Except Self",
+    "category": "Array",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 8,
+    "title": "3Sum",
+    "category": "Array",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 9,
+    "title": "Container With Most Water",
+    "category": "Array",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 10,
+    "title": "Search in Rotated Sorted Array",
+    "category": "Array",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 11,
+    "title": "Find Minimum in Rotated Sorted Array",
+    "category": "Array",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 12,
+    "title": "Sort Colors",
+    "category": "Array",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 13,
+    "title": "Kth Largest Element in an Array",
+    "category": "Array",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 14,
+    "title": "Top K Frequent Elements",
+    "category": "Array",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 15,
+    "title": "Spiral Matrix",
+    "category": "Array",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 16,
+    "title": "Next Permutation",
+    "category": "Array",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 17,
+    "title": "Sliding Window Maximum",
+    "category": "Array",
+    "difficulty": "Hard",
+    "status": "unsolved"
+  },
+  {
+    "id": 18,
+    "title": "Trapping Rain Water",
+    "category": "Array",
+    "difficulty": "Hard",
+    "status": "unsolved"
+  },
+  {
+    "id": 19,
+    "title": "Merge Intervals",
+    "category": "Array",
+    "difficulty": "Hard",
+    "status": "unsolved"
+  },
+  {
+    "id": 20,
+    "title": "First Missing Positive",
+    "category": "Array",
+    "difficulty": "Hard",
+    "status": "unsolved"
+  },
+
+ 
+  {
+    "id": 21,
+    "title": "Reverse String",
+    "category": "Strings",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 22,
+    "title": "Valid Anagram",
+    "category": "Strings",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 23,
+    "title": "Valid Palindrome",
+    "category": "Strings",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 24,
+    "title": "First Unique Character in a String",
+    "category": "Strings",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 25,
+    "title": "Implement strStr()",
+    "category": "Strings",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 26,
+    "title": "Longest Common Prefix",
+    "category": "Strings",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 27,
+    "title": "String to Integer (atoi)",
+    "category": "Strings",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 28,
+    "title": "Longest Substring Without Repeating Characters",
+    "category": "Strings",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 29,
+    "title": "Longest Palindromic Substring",
+    "category": "Strings",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 30,
+    "title": "Group Anagrams",
+    "category": "Strings",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 31,
+    "title": "Decode Ways",
+    "category": "Strings",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 32,
+    "title": "Palindromic Substrings",
+    "category": "Strings",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 33,
+    "title": "Minimum Window Substring",
+    "category": "Strings",
+    "difficulty": "Hard",
+    "status": "unsolved"
+  },
+  {
+    "id": 34,
+    "title": "Regular Expression Matching",
+    "category": "Strings",
+    "difficulty": "Hard",
+    "status": "unsolved"
+  },
+  {
+    "id": 35,
+    "title": "Wildcard Matching",
+    "category": "Strings",
+    "difficulty": "Hard",
+    "status": "unsolved"
+  },
+  {
+    "id": 36,
+    "title": "Word Break",
+    "category": "Strings",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 37,
+    "title": "Word Search",
+    "category": "Strings",
+    "difficulty": "Medium",
+    "status": "unsolved"
+  },
+  {
+    "id": 38,
+    "title": "Edit Distance",
+    "category": "Strings",
+    "difficulty": "Hard",
+    "status": "unsolved"
+  },
+  {
+    "id": 39,
+    "title": "Basic Calculator II",
+    "category": "Strings",
+    "difficulty": "Hard",
+    "status": "unsolved"
+  },
+  {
+    "id": 40,
+    "title": "Distinct Subsequences",
+    "category": "Strings",
+    "difficulty": "Hard",
+    "status": "unsolved"
+  },
+
+
+  
+    
+    {
+      "id": 41,
+      "title": "Reverse Linked List",
+      "category": "Linked List",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 42,
+      "title": "Merge Two Sorted Lists",
+      "category": "Linked List",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 43,
+      "title": "Remove Nth Node From End of List",
+      "category": "Linked List",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 44,
+      "title": "Add Two Numbers",
+      "category": "Linked List",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 45,
+      "title": "Linked List Cycle",
+      "category": "Linked List",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 46,
+      "title": "Intersection of Two Linked Lists",
+      "category": "Linked List",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 47,
+      "title": "Palindrome Linked List",
+      "category": "Linked List",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 48,
+      "title": "Copy List with Random Pointer",
+      "category": "Linked List",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 49,
+      "title": "Reorder List",
+      "category": "Linked List",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 50,
+      "title": "Odd Even Linked List",
+      "category": "Linked List",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 51,
+      "title": "Rotate List",
+      "category": "Linked List",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 52,
+      "title": "Swap Nodes in Pairs",
+      "category": "Linked List",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 53,
+      "title": "Sort List",
+      "category": "Linked List",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 54,
+      "title": "Partition List",
+      "category": "Linked List",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 55,
+      "title": "Flatten Multilevel Doubly Linked List",
+      "category": "Linked List",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 56,
+      "title": "Middle of the Linked List",
+      "category": "Linked List",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 57,
+      "title": "Reverse Nodes in k-Group",
+      "category": "Linked List",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 58,
+      "title": "Merge k Sorted Lists",
+      "category": "Linked List",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 59,
+      "title": "LRU Cache (with Linked List)",
+      "category": "Linked List",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 60,
+      "title": "LFU Cache (with Linked List)",
+      "category": "Linked List",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+  
+   
+    {
+      "id": 61,
+      "title": "Maximum Depth of Binary Tree",
+      "category": "Trees",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 62,
+      "title": "Symmetric Tree",
+      "category": "Trees",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 63,
+      "title": "Validate Binary Search Tree",
+      "category": "Trees",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 64,
+      "title": "Binary Tree Level Order Traversal",
+      "category": "Trees",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 65,
+      "title": "Convert Sorted Array to BST",
+      "category": "Trees",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 66,
+      "title": "Same Tree",
+      "category": "Trees",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 67,
+      "title": "Path Sum",
+      "category": "Trees",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 68,
+      "title": "Balanced Binary Tree",
+      "category": "Trees",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 69,
+      "title": "Binary Tree Inorder Traversal",
+      "category": "Trees",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 70,
+      "title": "Binary Tree Right Side View",
+      "category": "Trees",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 71,
+      "title": "Lowest Common Ancestor of BST",
+      "category": "Trees",
+      "difficulty": "Easy",
+      "status": "unsolved"
+    },
+    {
+      "id": 72,
+      "title": "Construct Binary Tree (Preorder + Inorder)",
+      "category": "Trees",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 73,
+      "title": "Flatten Binary Tree to Linked List",
+      "category": "Trees",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 74,
+      "title": "Binary Tree Maximum Path Sum",
+      "category": "Trees",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 75,
+      "title": "Serialize and Deserialize Binary Tree",
+      "category": "Trees",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 76,
+      "title": "Recover Binary Search Tree",
+      "category": "Trees",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 77,
+      "title": "Binary Tree Cameras",
+      "category": "Trees",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 78,
+      "title": "Count Complete Tree Nodes",
+      "category": "Trees",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 79,
+      "title": "Populating Next Right Pointers",
+      "category": "Trees",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 80,
+      "title": "Unique Binary Search Trees II",
+      "category": "Trees",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+  
+    {
+      "id": 81,
+      "title": "Number of Islands",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 82,
+      "title": "Clone Graph",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 83,
+      "title": "Course Schedule I",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 84,
+      "title": "Course Schedule II",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 85,
+      "title": "Pacific Atlantic Water Flow",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 86,
+      "title": "Rotting Oranges",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 87,
+      "title": "Surrounded Regions",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 88,
+      "title": "Graph Valid Tree",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 89,
+      "title": "Evaluate Division",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 90,
+      "title": "Network Delay Time",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 91,
+      "title": "Keys and Rooms",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 92,
+      "title": "Is Graph Bipartite?",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 93,
+      "title": "Word Ladder",
+      "category": "Graph",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 94,
+      "title": "Word Ladder II",
+      "category": "Graph",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 95,
+      "title": "Critical Connections in a Network",
+      "category": "Graph",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 96,
+      "title": "Reconstruct Itinerary",
+      "category": "Graph",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 97,
+      "title": "Minimum Spanning Tree (Kruskal/Prim implementation)",
+      "category": "Graph",
+      "difficulty": "Hard",
+      "status": "unsolved"
+    },
+    {
+      "id": 98,
+      "title": "All Paths from Source to Target",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 99,
+      "title": "Cheapest Flights Within K Stops",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+    {
+      "id": 100,
+      "title": "Shortest Path in Binary Matrix",
+      "category": "Graph",
+      "difficulty": "Medium",
+      "status": "unsolved"
+    },
+      {
+        "id": 101,
+        "title": "Kth Largest Element in an Array",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 102,
+        "title": "Top K Frequent Elements",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 103,
+        "title": "Merge k Sorted Lists",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 104,
+        "title": "Find Median from Data Stream",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 105,
+        "title": "Sliding Window Maximum",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 106,
+        "title": "Meeting Rooms II",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 107,
+        "title": "Task Scheduler",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 108,
+        "title": "Reorganize String",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 109,
+        "title": "K Closest Points to Origin",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 110,
+        "title": "Furthest Building You Can Reach",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 111,
+        "title": "Find K Pairs with Smallest Sums",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 112,
+        "title": "Car Pooling",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 113,
+        "title": "Meeting Rooms III",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 114,
+        "title": "Minimize Deviation in Array",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 115,
+        "title": "Smallest Range Covering K Lists",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 116,
+        "title": "Trapping Rain Water II",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 117,
+        "title": "IPO",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 118,
+        "title": "Super Ugly Number",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 119,
+        "title": "Ugly Number II",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 120,
+        "title": "Last Stone Weight",
+        "category": "Heap / Priority Queue",
+        "difficulty": "Easy",
+        "status": "unsolved"
+      },
+    
+      
+      {
+        "id": 121,
+        "title": "Climbing Stairs",
+        "category": "Dynamic Programming",
+        "difficulty": "Easy",
+        "status": "unsolved"
+      },
+      {
+        "id": 122,
+        "title": "House Robber",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 123,
+        "title": "House Robber II",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 124,
+        "title": "Coin Change",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 125,
+        "title": "Coin Change II",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 126,
+        "title": "Unique Paths",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 127,
+        "title": "Minimum Path Sum",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 128,
+        "title": "Longest Increasing Subsequence",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 129,
+        "title": "Jump Game",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 130,
+        "title": "Jump Game II",
+        "category": "Dynamic Programming",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 131,
+        "title": "Decode Ways",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 132,
+        "title": "Combination Sum IV",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 133,
+        "title": "Edit Distance",
+        "category": "Dynamic Programming",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 134,
+        "title": "Distinct Subsequences",
+        "category": "Dynamic Programming",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 135,
+        "title": "Word Break",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 136,
+        "title": "Interleaving String",
+        "category": "Dynamic Programming",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 137,
+        "title": "Palindromic Substrings",
+        "category": "Dynamic Programming",
+        "difficulty": "Medium",
+        "status": "unsolved"
+      },
+      {
+        "id": 138,
+        "title": "Regular Expression Matching",
+        "category": "Dynamic Programming",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 139,
+        "title": "Burst Balloons",
+        "category": "Dynamic Programming",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+      {
+        "id": 140,
+        "title": "Dungeon Game",
+        "category": "Dynamic Programming",
+        "difficulty": "Hard",
+        "status": "unsolved"
+      },
+    
+    
+    
+        {
+          "id": 141,
+          "title": "Valid Parentheses",
+          "category": "Stack",
+          "difficulty": "Easy",
+          "status": "unsolved"
+        },
+        {
+          "id": 142,
+          "title": "Min Stack",
+          "category": "Stack",
+          "difficulty": "Easy",
+          "status": "unsolved"
+        },
+        {
+          "id": 143,
+          "title": "Implement Stack using Queues",
+          "category": "Stack",
+          "difficulty": "Easy",
+          "status": "unsolved"
+        },
+        {
+          "id": 144,
+          "title": "Reverse a Linked List",
+          "category": "Stack",
+          "difficulty": "Easy",
+          "status": "unsolved"
+        },
+        {
+          "id": 145,
+          "title": "Valid Palindrome",
+          "category": "Stack",
+          "difficulty": "Easy",
+          "status": "unsolved"
+        },
+        {
+          "id": 146,
+          "title": "Next Greater Element I",
+          "category": "Stack",
+          "difficulty": "Medium",
+          "status": "unsolved"
+        },
+        {
+          "id": 147,
+          "title": "Daily Temperatures",
+          "category": "Stack",
+          "difficulty": "Medium",
+          "status": "unsolved"
+        },
+        {
+          "id": 148,
+          "title": "Trapping Rain Water",
+          "category": "Stack",
+          "difficulty": "Medium",
+          "status": "unsolved"
+        },
+        {
+          "id": 149,
+          "title": "Largest Rectangle in Histogram",
+          "category": "Stack",
+          "difficulty": "Medium",
+          "status": "unsolved"
+        },
+        {
+          "id": 150,
+          "title": "Remove Duplicate Letters",
+          "category": "Stack",
+          "difficulty": "Medium",
+          "status": "unsolved"
+        },
+        {
+          "id": 151,
+          "title": "Maximal Rectangle",
+          "category": "Stack",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 152,
+          "title": "Sum of Subarray Minimums",
+          "category": "Stack",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 153,
+          "title": "Online Stock Span",
+          "category": "Stack",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 154,
+          "title": "Remove K Digits",
+          "category": "Stack",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 155,
+          "title": "Next Greater Element II",
+          "category": "Stack",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 156,
+          "title": "Simplify Path",
+          "category": "Stack",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+      
+       
+        {
+          "id": 157,
+          "title": "Factorial of a Number",
+          "category": "Recursion",
+          "difficulty": "Easy",
+          "status": "unsolved"
+        },
+        {
+          "id": 158,
+          "title": "Fibonacci Number",
+          "category": "Recursion",
+          "difficulty": "Easy",
+          "status": "unsolved"
+        },
+        {
+          "id": 159,
+          "title": "Reverse a String",
+          "category": "Recursion",
+          "difficulty": "Easy",
+          "status": "unsolved"
+        },
+        {
+          "id": 160,
+          "title": "Palindrome Number",
+          "category": "Recursion",
+          "difficulty": "Easy",
+          "status": "unsolved"
+        },
+        {
+          "id": 161,
+          "title": "Sum of Digits",
+          "category": "Recursion",
+          "difficulty": "Easy",
+          "status": "unsolved"
+        },
+        {
+          "id": 162,
+          "title": "Climbing Stairs",
+          "category": "Recursion",
+          "difficulty": "Medium",
+          "status": "unsolved"
+        },
+        {
+          "id": 163,
+          "title": "Subsets",
+          "category": "Recursion",
+          "difficulty": "Medium",
+          "status": "unsolved"
+        },
+        {
+          "id": 164,
+          "title": "Permutations",
+          "category": "Recursion",
+          "difficulty": "Medium",
+          "status": "unsolved"
+        },
+        {
+          "id": 165,
+          "title": "Combination Sum",
+          "category": "Recursion",
+          "difficulty": "Medium",
+          "status": "unsolved"
+        },
+        {
+          "id": 166,
+          "title": "Letter Combinations of a Phone Number",
+          "category": "Recursion",
+          "difficulty": "Medium",
+          "status": "unsolved"
+        },
+        {
+          "id": 167,
+          "title": "Word Search",
+          "category": "Recursion",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 168,
+          "title": "N-Queens",
+          "category": "Recursion",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 169,
+          "title": "Sudoku Solver",
+          "category": "Recursion",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 170,
+          "title": "Word Ladder II",
+          "category": "Recursion",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 171,
+          "title": "Palindrome Partitioning II",
+          "category": "Recursion",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 172,
+          "title": "Regular Expression Matching",
+          "category": "Recursion",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 173,
+          "title": "Distinct Subsequences",
+          "category": "Recursion",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 174,
+          "title": "Scramble String",
+          "category": "Recursion",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 175,
+          "title": "Unique Binary Search Trees II",
+          "category": "Recursion",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        },
+        {
+          "id": 176,
+          "title": "Maximum Length of Repeated Subarray",
+          "category": "Recursion",
+          "difficulty": "Hard",
+          "status": "unsolved"
+        }
+      ]
+      
+  

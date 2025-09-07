@@ -1,0 +1,466 @@
+{
+    "category": "Dynamic Programming",
+    "problems": [
+      {
+        "id": 121,
+        "title": "Climbing Stairs",
+        "difficulty": "Easy",
+        "description": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
+        "examples": [
+          {
+            "input": "n = 2",
+            "output": "2"
+          },
+          {
+            "input": "n = 3",
+            "output": "3"
+          }
+        ],
+        "constraints": [
+          "1 <= n <= 45"
+        ],
+        "testCases": [
+          { "input": { "n": 2 }, "output": 2 },
+          { "input": { "n": 3 }, "output": 3 },
+          { "input": { "n": 1 }, "output": 1 }
+        ],
+        "javaTemplate": "class Solution { public int climbStairs(int n) { return 0; } }",
+        "pythonTemplate": "class Solution: def climbStairs(self, n: int) -> int: pass",
+        "cppTemplate": "class Solution { public: int climbStairs(int n) { return 0; } };"
+      },
+      {
+        "id": 122,
+        "title": "House Robber",
+        "difficulty": "Medium",
+        "description": "You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. The only constraint stopping you from robbing each of them is that adjacent houses have security systems connected, and it will automatically contact the police if two adjacent houses are broken into on the same night. Given an integer array `nums` representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.",
+        "examples": [
+          {
+            "input": "nums = [1,2,3,1]",
+            "output": "4"
+          }
+        ],
+        "constraints": [
+          "1 <= nums.length <= 100",
+          "0 <= nums[i] <= 400"
+        ],
+        "testCases": [
+          { "input": { "nums": [1,2,3,1] }, "output": 4 },
+          { "input": { "nums": [2,7,9,3,1] }, "output": 12 },
+          { "input": { "nums": [5] }, "output": 5 }
+        ],
+        "javaTemplate": "class Solution { public int rob(int[] nums) { return 0; } }",
+        "pythonTemplate": "class Solution: def rob(self, nums: List[int]) -> int: pass",
+        "cppTemplate": "class Solution { public: int rob(vector<int>& nums) { return 0; } };"
+      },
+      {
+        "id": 123,
+        "title": "House Robber II",
+        "difficulty": "Medium",
+        "description": "You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. The houses are arranged in a circle. That means the first house is the neighbor of the last one. Return the maximum amount of money you can rob tonight without alerting the police.",
+        "examples": [
+          {
+            "input": "nums = [2,3,2]",
+            "output": "3"
+          }
+        ],
+        "constraints": [
+          "1 <= nums.length <= 100",
+          "0 <= nums[i] <= 1000"
+        ],
+        "testCases": [
+          { "input": { "nums": [2,3,2] }, "output": 3 },
+          { "input": { "nums": [1,2,3,1] }, "output": 4 },
+          { "input": { "nums": [5] }, "output": 5 }
+        ],
+        "javaTemplate": "class Solution { public int rob(int[] nums) { return 0; } }",
+        "pythonTemplate": "class Solution: def rob(self, nums: List[int]) -> int: pass",
+        "cppTemplate": "class Solution { public: int rob(vector<int>& nums) { return 0; } };"
+      },
+      {
+        "id": 124,
+        "title": "Coin Change",
+        "difficulty": "Medium",
+        "description": "You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money. Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.",
+        "examples": [
+          {
+            "input": "coins = [1,2,5], amount = 11",
+            "output": "3"
+          }
+        ],
+        "constraints": [
+          "1 <= coins.length <= 12",
+          "1 <= amount <= 10^4"
+        ],
+        "testCases": [
+          { "input": { "coins": [1,2,5], "amount": 11 }, "output": 3 },
+          { "input": { "coins": [2], "amount": 3 }, "output": -1 },
+          { "input": { "coins": [1], "amount": 0 }, "output": 0 }
+        ],
+        "javaTemplate": "class Solution { public int coinChange(int[] coins, int amount) { return 0; } }",
+        "pythonTemplate": "class Solution: def coinChange(self, coins: List[int], amount: int) -> int: pass",
+        "cppTemplate": "class Solution { public: int coinChange(vector<int>& coins, int amount) { return 0; } };"
+      },
+      {
+        "id": 125,
+        "title": "Coin Change II",
+        "difficulty": "Medium",
+        "description": "You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money. Return the number of combinations that make up that amount. You may assume that you have an infinite number of each kind of coin.",
+        "examples": [
+          {
+            "input": "amount = 5, coins = [1,2,5]",
+            "output": "4"
+          }
+        ],
+        "constraints": [
+          "1 <= coins.length <= 500",
+          "0 <= amount <= 5000"
+        ],
+        "testCases": [
+          { "input": { "amount": 5, "coins": [1,2,5] }, "output": 4 },
+          { "input": { "amount": 3, "coins": [2] }, "output": 0 },
+          { "input": { "amount": 10, "coins": [10] }, "output": 1 }
+        ],
+        "javaTemplate": "class Solution { public int change(int amount, int[] coins) { return 0; } }",
+        "pythonTemplate": "class Solution: def change(self, amount: int, coins: List[int]) -> int: pass",
+        "cppTemplate": "class Solution { public: int change(int amount, vector<int>& coins) { return 0; } };"
+      },
+      {
+        "id": 126,
+        "title": "Unique Paths",
+        "difficulty": "Medium",
+        "description": "A robot is located at the top-left corner of a m \\times n grid. The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid. How many unique paths are there?",
+        "examples": [
+          {
+            "input": "m = 3, n = 7",
+            "output": "28"
+          }
+        ],
+        "constraints": [
+          "1 <= m, n <= 100"
+        ],
+        "testCases": [
+          { "input": { "m": 3, "n": 7 }, "output": 28 },
+          { "input": { "m": 3, "n": 2 }, "output": 3 },
+          { "input": { "m": 7, "n": 3 }, "output": 28 }
+        ],
+        "javaTemplate": "class Solution { public int uniquePaths(int m, int n) { return 0; } }",
+        "pythonTemplate": "class Solution: def uniquePaths(self, m: int, n: int) -> int: pass",
+        "cppTemplate": "class Solution { public: int uniquePaths(int m, int n) { return 0; } };"
+      },
+      {
+        "id": 127,
+        "title": "Minimum Path Sum",
+        "difficulty": "Medium",
+        "description": "Given a m \\times n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path. You can only move either down or right at any point in time.",
+        "examples": [
+          {
+            "input": "grid = [[1,3,1],[1,5,1],[4,2,1]]",
+            "output": "7"
+          }
+        ],
+        "constraints": [
+          "1 <= m, n <= 200",
+          "0 <= grid[i][j] <= 100"
+        ],
+        "testCases": [
+          { "input": { "grid": [[1,3,1],[1,5,1],[4,2,1]] }, "output": 7 },
+          { "input": { "grid": [[1,2,3],[4,5,6]] }, "output": 12 },
+          { "input": { "grid": [[1]] }, "output": 1 }
+        ],
+        "javaTemplate": "class Solution { public int minPathSum(int[][] grid) { return 0; } }",
+        "pythonTemplate": "class Solution: def minPathSum(self, grid: List[List[int]]) -> int: pass",
+        "cppTemplate": "class Solution { public: int minPathSum(vector<vector<int>>& grid) { return 0; } };"
+      },
+      {
+        "id": 128,
+        "title": "Longest Increasing Subsequence",
+        "difficulty": "Medium",
+        "description": "Given an integer array `nums`, return the length of the longest strictly increasing subsequence.",
+        "examples": [
+          {
+            "input": "nums = [10,9,2,5,3,7,101,18]",
+            "output": "4"
+          }
+        ],
+        "constraints": [
+          "1 <= nums.length <= 2500",
+          "-10^4 <= nums[i] <= 10^4"
+        ],
+        "testCases": [
+          { "input": { "nums": [10,9,2,5,3,7,101,18] }, "output": 4 },
+          { "input": { "nums": [0,1,0,3,2,3] }, "output": 4 },
+          { "input": { "nums": [7,7,7,7,7,7,7] }, "output": 1 }
+        ],
+        "javaTemplate": "class Solution { public int lengthOfLIS(int[] nums) { return 0; } }",
+        "pythonTemplate": "class Solution: def lengthOfLIS(self, nums: List[int]) -> int: pass",
+        "cppTemplate": "class Solution { public: int lengthOfLIS(vector<int>& nums) { return 0; } };"
+      },
+      {
+        "id": 129,
+        "title": "Jump Game",
+        "difficulty": "Medium",
+        "description": "Given an array of non-negative integers `nums`, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Determine if you are able to reach the last index.",
+        "examples": [
+          {
+            "input": "nums = [2,3,1,1,4]",
+            "output": "true"
+          }
+        ],
+        "constraints": [
+          "1 <= nums.length <= 10^4",
+          "0 <= nums[i] <= 10^5"
+        ],
+        "testCases": [
+          { "input": { "nums": [2,3,1,1,4] }, "output": true },
+          { "input": { "nums": [3,2,1,0,4] }, "output": false },
+          { "input": { "nums": [0] }, "output": true }
+        ],
+        "javaTemplate": "class Solution { public boolean canJump(int[] nums) { return false; } }",
+        "pythonTemplate": "class Solution: def canJump(self, nums: List[int]) -> bool: pass",
+        "cppTemplate": "class Solution { public: bool canJump(vector<int>& nums) { return false; } };"
+      },
+      {
+        "id": 130,
+        "title": "Jump Game II",
+        "difficulty": "Hard",
+        "description": "Given an array of non-negative integers `nums`, you are initially positioned at the first index. Each element in the array represents your maximum jump length at that position. Your goal is to reach the last index in the minimum number of jumps. You can assume that you can always reach the last index.",
+        "examples": [
+          {
+            "input": "nums = [2,3,1,1,4]",
+            "output": "2"
+          }
+        ],
+        "constraints": [
+          "1 <= nums.length <= 10^4",
+          "0 <= nums[i] <= 1000"
+        ],
+        "testCases": [
+          { "input": { "nums": [2,3,1,1,4] }, "output": 2 },
+          { "input": { "nums": [2,3,0,1,4] }, "output": 2 },
+          { "input": { "nums": [1] }, "output": 0 }
+        ],
+        "javaTemplate": "class Solution { public int jump(int[] nums) { return 0; } }",
+        "pythonTemplate": "class Solution: def jump(self, nums: List[int]) -> int: pass",
+        "cppTemplate": "class Solution { public: int jump(vector<int>& nums) { return 0; } };"
+      },
+      {
+        "id": 131,
+        "title": "Decode Ways",
+        "difficulty": "Medium",
+        "description": "A message containing letters from A-Z is being encoded to numbers using the following mapping: 'A' -> 1, 'B' -> 2, ..., 'Z' -> 26. Given a string `s` containing only digits, return the number of ways to decode it.",
+        "examples": [
+          {
+            "input": "s = \"12\"",
+            "output": "2"
+          }
+        ],
+        "constraints": [
+          "1 <= s.length <= 100"
+        ],
+        "testCases": [
+          { "input": { "s": "12" }, "output": 2 },
+          { "input": { "s": "226" }, "output": 3 },
+          { "input": { "s": "0" }, "output": 0 }
+        ],
+        "javaTemplate": "class Solution { public int numDecodings(String s) { return 0; } }",
+        "pythonTemplate": "class Solution: def numDecodings(self, s: str) -> int: pass",
+        "cppTemplate": "class Solution { public: int numDecodings(string s) { return 0; } };"
+      },
+      {
+        "id": 132,
+        "title": "Combination Sum IV",
+        "difficulty": "Medium",
+        "description": "Given an array of distinct integers `nums` and a target integer `target`, return the number of possible combinations that sum up to `target`.",
+        "examples": [
+          {
+            "input": "nums = [1,2,3], target = 4",
+            "output": "7"
+          }
+        ],
+        "constraints": [
+          "1 <= nums.length <= 200",
+          "1 <= target <= 1000"
+        ],
+        "testCases": [
+          { "input": { "nums": [1,2,3], "target": 4 }, "output": 7 }
+        ],
+        "javaTemplate": "class Solution { public int combinationSum4(int[] nums, int target) { return 0; } }",
+        "pythonTemplate": "class Solution: def combinationSum4(self, nums: List[int], target: int) -> int: pass",
+        "cppTemplate": "class Solution { public: int combinationSum4(vector<int>& nums, int target) { return 0; } };"
+      },
+      {
+        "id": 133,
+        "title": "Edit Distance",
+        "difficulty": "Hard",
+        "description": "Given two strings `word1` and `word2`, return the minimum number of operations required to convert `word1` to `word2`. You have the following three operations permitted on a word: insert a character, delete a character, replace a character.",
+        "examples": [
+          {
+            "input": "word1 = \"horse\", word2 = \"ros\"",
+            "output": "3"
+          }
+        ],
+        "constraints": [
+          "0 <= word1.length, word2.length <= 500"
+        ],
+        "testCases": [
+          { "input": { "word1": "horse", "word2": "ros" }, "output": 3 }
+        ],
+        "javaTemplate": "class Solution { public int minDistance(String word1, String word2) { return 0; } }",
+        "pythonTemplate": "class Solution: def minDistance(self, word1: str, word2: str) -> int: pass",
+        "cppTemplate": "class Solution { public: int minDistance(string word1, string word2) { return 0; } };"
+      },
+      {
+        "id": 134,
+        "title": "Distinct Subsequences",
+        "difficulty": "Hard",
+        "description": "Given two strings `s` and `t`, return the number of distinct subsequences of `s` which equals `t`. A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters.",
+        "examples": [
+          {
+            "input": "s = \"rabbbit\", t = \"rabbit\"",
+            "output": "3"
+          }
+        ],
+        "constraints": [
+          "1 <= s.length, t.length <= 1000"
+        ],
+        "testCases": [
+          { "input": { "s": "rabbbit", "t": "rabbit" }, "output": 3 }
+        ],
+        "javaTemplate": "class Solution { public int numDistinct(String s, String t) { return 0; } }",
+        "pythonTemplate": "class Solution: def numDistinct(self, s: str, t: str) -> int: pass",
+        "cppTemplate": "class Solution { public: int numDistinct(string s, string t) { return 0; } };"
+      },
+      {
+        "id": 135,
+        "title": "Word Break",
+        "difficulty": "Medium",
+        "description": "Given a string `s` and a dictionary of strings `wordDict`, return `true` if `s` can be segmented into a space-separated sequence of one or more dictionary words. Note that the same word in the dictionary may be reused multiple times in the segmentation.",
+        "examples": [
+          {
+            "input": "s = \"leetcode\", wordDict = [\"leet\", \"code\"]",
+            "output": "true"
+          }
+        ],
+        "constraints": [
+          "1 <= s.length <= 300",
+          "1 <= wordDict.length <= 1000"
+        ],
+        "testCases": [
+          { "input": { "s": "leetcode", "wordDict": ["leet", "code"] }, "output": true }
+        ],
+        "javaTemplate": "class Solution { public boolean wordBreak(String s, List<String> wordDict) { return false; } }",
+        "pythonTemplate": "class Solution: def wordBreak(self, s: str, wordDict: List[str]) -> bool: pass",
+        "cppTemplate": "class Solution { public: bool wordBreak(string s, vector<string>& wordDict) { return false; } };"
+      },
+      {
+        "id": 136,
+        "title": "Interleaving String",
+        "difficulty": "Hard",
+        "description": "Given three strings `s1`, `s2`, and `s3`, return `true` if `s3` is formed by an interleaving of `s1` and `s2`. An interleaving of two strings `s` and `t` is a configuration where `s` and `t` are divided into `n` and `m` non-empty substrings respectively, such that `s = s1 + s2 + ... + sn`, `t = t1 + t2 + ... + tm`, and `s3` is the concatenation of these substrings in a way that maintains the relative order of characters in `s` and `t`.",
+        "examples": [
+          {
+            "input": "s1 = \"aabcc\", s2 = \"dbbca\", s3 = \"aadbbcbcac\"",
+            "output": "true"
+          }
+        ],
+        "constraints": [
+          "0 <= s1.length, s2.length <= 100",
+          "0 <= s3.length <= 200"
+        ],
+        "testCases": [
+          { "input": { "s1": "aabcc", "s2": "dbbca", "s3": "aadbbcbcac" }, "output": true }
+        ],
+        "javaTemplate": "class Solution { public boolean isInterleave(String s1, String s2, String s3) { return false; } }",
+        "pythonTemplate": "class Solution: def isInterleave(self, s1: str, s2: str, s3: str) -> bool: pass",
+        "cppTemplate": "class Solution { public: bool isInterleave(string s1, string s2, string s3) { return false; } };"
+      },
+      {
+        "id": 137,
+        "title": "Palindromic Substrings",
+        "difficulty": "Medium",
+        "description": "Given a string `s`, return the number of palindromic substrings in it. A substring is a contiguous sequence of characters within the string.",
+        "examples": [
+          {
+            "input": "s = \"abc\"",
+            "output": "3"
+          }
+        ],
+        "constraints": [
+          "1 <= s.length <= 1000"
+        ],
+        "testCases": [
+          { "input": { "s": "abc" }, "output": 3 }
+        ],
+        "javaTemplate": "class Solution { public int countSubstrings(String s) { return 0; } }",
+        "pythonTemplate": "class Solution: def countSubstrings(self, s: str) -> int: pass",
+        "cppTemplate": "class Solution { public: int countSubstrings(string s) { return 0; } };"
+      },
+      {
+        "id": 138,
+        "title": "Regular Expression Matching",
+        "difficulty": "Hard",
+        "description": "Given an input string `s` and a pattern `p`, implement regular expression matching with support for '.' and '*'. The '.' matches any single character. The '*' matches zero or more of the preceding element. The matching should cover the entire input string (not partial).",
+        "examples": [
+          {
+            "input": "s = \"aa\", p = \"a\"",
+            "output": "false"
+          }
+        ],
+        "constraints": [
+          "1 <= s.length <= 20",
+          "1 <= p.length <= 30"
+        ],
+        "testCases": [
+          { "input": { "s": "aa", "p": "a" }, "output": false }
+        ],
+        "javaTemplate": "class Solution { public boolean isMatch(String s, String p) { return false; } }",
+        "pythonTemplate": "class Solution: def isMatch(self, s: str, p: str) -> bool: pass",
+        "cppTemplate": "class Solution { public: bool isMatch(string s, string p) { return false; } };"
+      },
+      {
+        "id": 139,
+        "title": "Burst Balloons",
+        "difficulty": "Hard",
+        "description": "You are given `n` balloons, indexed from 0 to n-1. Each balloon is painted with a number on it. You burst them one by one. If you burst balloon i, you will get `nums[i-1] * nums[i] * nums[i+1]` coins. If `i-1` or `i+1` is out of bounds, treat them as if they have a value of 1. After the burst, balloon `i-1` and `i+1` become adjacent. Find the maximum coins you can collect by bursting the balloons wisely.",
+        "examples": [
+          {
+            "input": "nums = [3,1,5,8]",
+            "output": "167"
+          }
+        ],
+        "constraints": [
+          "1 <= nums.length <= 500",
+          "0 <= nums[i] <= 100"
+        ],
+        "testCases": [
+          { "input": { "nums": [3,1,5,8] }, "output": 167 }
+        ],
+        "javaTemplate": "class Solution { public int maxCoins(int[] nums) { return 0; } }",
+        "pythonTemplate": "class Solution: def maxCoins(self, nums: List[int]) -> int: pass",
+        "cppTemplate": "class Solution { public: int maxCoins(vector<int>& nums) { return 0; } };"
+      },
+      {
+        "id": 140,
+        "title": "Dungeon Game",
+        "difficulty": "Hard",
+        "description": "The knight is in a dungeon, represented by an m \\times n grid. The knight starts at the top-left corner and must reach the bottom-right corner. The knight's health starts at 1. The knight must maintain a positive health throughout his journey. What is the minimum initial health the knight must have to complete the quest?",
+        "examples": [
+          {
+            "input": "dungeon = [[-2,-3,3],[-5,-10,1],[10,30,-5]]",
+            "output": "7"
+          }
+        ],
+        "constraints": [
+          "1 <= m, n <= 200",
+          "-100 <= dungeon[i][j] <= 100"
+        ],
+        "testCases": [
+          { "input": { "dungeon": [[-2,-3,3],[-5,-10,1],[10,30,-5]] }, "output": 7 }
+        ],
+        "javaTemplate": "class Solution { public int calculateMinimumHP(int[][] dungeon) { return 0; } }",
+        "pythonTemplate": "class Solution: def calculateMinimumHP(self, dungeon: List[List[int]]) -> int: pass",
+        "cppTemplate": "class Solution { public: int calculateMinimumHP(vector<vector<int>>& dungeon) { return 0; } };"
+      }
+    ]
+  }
+  

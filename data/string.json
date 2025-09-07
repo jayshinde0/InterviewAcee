@@ -1,0 +1,184 @@
+{
+  "category": "String",
+  "problems": [
+    {
+      "id": 3,
+      "title": "Valid Anagram",
+      "difficulty": "Easy",
+      "description": "Given two strings `s` and `t`, return `true` if `t` is an anagram of `s`, and `false` otherwise. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.",
+      "hint": "You can sort both strings and compare them, or use a frequency count of characters.",
+      "examples": [
+        {
+          "input": "s = \"anagram\", t = \"nagaram\"",
+          "output": "true",
+          "explanation": "Both strings contain the same characters with the same frequencies."
+        }
+      ],
+      "constraints": [
+        "1 <= s.length, t.length <= 5 * 10^4",
+        "s and t consist of lowercase English letters."
+      ],
+      "testCases": [
+        {
+          "input": {
+            "s": "anagram",
+            "t": "nagaram"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "rat",
+            "t": "car"
+          },
+          "output": false
+        }
+      ],
+      "javaTemplate": "class Solution { \n    public boolean isAnagram(String s, String t) { \n        return false; \n    } \n}",
+      "pythonTemplate": "class Solution:\n    def isAnagram(self, s: str, t: str) -> bool:\n        pass",
+      "cppTemplate": "class Solution { \npublic:\n    bool isAnagram(std::string s, std::string t) { \n        return false; \n    } \n};"
+    },
+    {
+      "id": 4,
+      "title": "Valid Palindrome",
+      "difficulty": "Easy",
+      "description": "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers. Given a string `s`, return `true` if it is a palindrome, or `false` otherwise.",
+      "hint": "Use two pointers, one from the beginning and one from the end. Skip non-alphanumeric characters and compare characters in a case-insensitive manner.",
+      "examples": [
+        {
+          "input": "s = \"A man, a plan, a canal: Panama\"",
+          "output": "true",
+          "explanation": "After removing non-alphanumeric characters and converting to lowercase, it becomes \"amanaplanacanalpanama\", which is a palindrome."
+        }
+      ],
+      "constraints": [
+        "1 <= s.length <= 2 * 10^5",
+        "s consists only of printable ASCII characters."
+      ],
+      "testCases": [
+        {
+          "input": {
+            "s": "A man, a plan, a canal: Panama"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "race a car"
+          },
+          "output": false
+        }
+      ],
+      "javaTemplate": "class Solution { \n    public boolean isPalindrome(String s) { \n        return false; \n    } \n}",
+      "pythonTemplate": "class Solution:\n    def isPalindrome(self, s: str) -> bool:\n        pass",
+      "cppTemplate": "class Solution { \npublic:\n    bool isPalindrome(std::string s) { \n        return false; \n    } \n};"
+    },
+    {
+      "id": 5,
+      "title": "Valid Parentheses",
+      "difficulty": "Easy",
+      "description": "Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of brackets. Open brackets must be closed in the correct order. Every close bracket has a corresponding open bracket of the same type.",
+      "hint": "Use a stack to keep track of opening brackets. When you encounter a closing bracket, check if it matches the most recent opening bracket.",
+      "examples": [
+        {
+          "input": "s = \"()\"",
+          "output": "true",
+          "explanation": "The string contains valid parentheses."
+        }
+      ],
+      "constraints": [
+        "1 <= s.length <= 10^4",
+        "s consists of parentheses only '()[]{}'."
+      ],
+      "testCases": [
+        {
+          "input": {
+            "s": "()"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "()[]{}"
+          },
+          "output": true
+        },
+        {
+          "input": {
+            "s": "(]"
+          },
+          "output": false
+        }
+      ],
+      "javaTemplate": "class Solution { \n    public boolean isValid(String s) { \n        return false; \n    } \n}",
+      "pythonTemplate": "class Solution:\n    def isValid(self, s: str) -> bool:\n        pass",
+      "cppTemplate": "class Solution { \npublic:\n    bool isValid(std::string s) { \n        return false; \n    } \n};"
+    },
+    {
+      "id": 6,
+      "title": "Encode and Decode Strings",
+      "difficulty": "Medium",
+      "description": "Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.",
+      "hint": "You can use a delimiter-based approach, but be careful about edge cases where the delimiter appears in the strings. A length-prefix approach might be more robust.",
+      "examples": [
+        {
+          "input": "[\"lint\",\"code\",\"love\",\"you\"]",
+          "output": "\"4#lint4#code4#love3#you\"",
+          "explanation": "We can encode each string by prefixing it with its length and a delimiter."
+        }
+      ],
+      "constraints": [
+        "1 <= strs.length <= 200",
+        "0 <= strs[i].length <= 200",
+        "strs[i] contains any possible characters out of 256 valid ASCII characters."
+      ],
+      "testCases": [
+        {
+          "input": {
+            "strs": ["lint","code","love","you"]
+          },
+          "output": ["lint","code","love","you"]
+        }
+      ],
+      "javaTemplate": "public class Codec { \n    public String encode(List<String> strs) { \n        return \"\"; \n    } \n    public List<String> decode(String s) { \n        return null; \n    } \n}",
+      "pythonTemplate": "class Codec:\n    def encode(self, strs: list[str]) -> str:\n        pass\n    \n    def decode(self, s: str) -> list[str]:\n        pass",
+      "cppTemplate": "class Codec { \npublic:\n    std::string encode(std::vector<std::string>& strs) { \n        return \"\"; \n    } \n    std::vector<std::string> decode(std::string s) { \n        return {}; \n    } \n};"
+    },
+    {
+      "id": 7,
+      "title": "Longest Common Prefix",
+      "difficulty": "Easy",
+      "description": "Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string `\"\"`.",
+      "hint": "You can compare characters vertically (character by character across all strings) or horizontally (compare strings pairwise).",
+      "examples": [
+        {
+          "input": "strs = [\"flower\",\"flow\",\"flight\"]",
+          "output": "\"fl\"",
+          "explanation": "The longest common prefix is \"fl\"."
+        }
+      ],
+      "constraints": [
+        "1 <= strs.length <= 200",
+        "0 <= strs[i].length <= 200",
+        "strs[i] consists of lowercase English letters."
+      ],
+      "testCases": [
+        {
+          "input": {
+            "strs": ["flower","flow","flight"]
+          },
+          "output": "fl"
+        },
+        {
+          "input": {
+            "strs": ["interspecies","interstellar","interstate"]
+          },
+          "output": "inters"
+        }
+      ],
+      "javaTemplate": "class Solution { \n    public String longestCommonPrefix(String[] strs) { \n        return \"\"; \n    } \n}",
+      "pythonTemplate": "class Solution:\n    def longestCommonPrefix(self, strs: List[str]) -> str:\n        pass",
+      "cppTemplate": "class Solution { \npublic:\n    std::string longestCommonPrefix(std::vector<std::string>& strs) { \n        return \"\"; \n    } \n};"
+    }
+  ]
+}

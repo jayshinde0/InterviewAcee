@@ -1,0 +1,64 @@
+version: '3.8'
+services:
+  interviewace-app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/interviewace
+    depends_on:
+      - mongodb
+      - judge0-server
+    networks:
+      - interviewace-network
+
+  mongodb:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - interviewace-network
+
+  judge0-server:
+    image: judge0/judge0:1.13.0
+    ports:
+      - "2358:2358"
+    environment:
+      - REDIS_URL=redis://judge0-redis:6379
+      - POSTGRES_HOST=judge0-db
+      - POSTGRES_DB=judge0
+      - POSTGRES_USER=judge0
+      - POSTGRES_PASSWORD=YourJudge0Password
+    depends_on:
+      - judge0-db
+      - judge0-redis
+    networks:
+      - interviewace-network
+
+  judge0-db:
+    image: postgres:13.0
+    environment:
+      - POSTGRES_PASSWORD=YourJudge0Password
+      - POSTGRES_USER=judge0
+      - POSTGRES_DB=judge0
+    volumes:
+      - judge0-db-data:/var/lib/postgresql/data/
+    networks:
+      - interviewace-network
+
+  judge0-redis:
+    image: redis:6.0
+    volumes:
+      - judge0-redis-data:/data
+    networks:
+      - interviewace-network
+
+volumes:
+  mongodb-data:
+  judge0-db-data:
+  judge0-redis-data:
+
+networks:
+  interviewace-network:

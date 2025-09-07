@@ -1,0 +1,450 @@
+{
+    "category": "Heap",
+    "problems": [
+      {
+        "id": 101,
+        "title": "Kth Largest Element in an Array",
+        "difficulty": "Medium",
+        "description": "Given an integer array `nums` and an integer `k`, return the k-th largest element in the array. Note that it is the k-th largest element in the sorted order, not the k-th distinct element. You must solve this without sorting the entire array.",
+        "examples": [
+          {
+            "input": "nums = [3,2,1,5,6,4], k = 2",
+            "output": "5"
+          }
+        ],
+        "constraints": [
+          "1 <= k <= nums.length <= 10^5"
+        ],
+        "testCases": [
+          { "input": { "nums": [3,2,1,5,6,4], "k": 2 }, "output": 5 },
+          { "input": { "nums": [3,2,3,1,2,4,5,5,6], "k": 4 }, "output": 4 },
+          { "input": { "nums": [1], "k": 1 }, "output": 1 }
+        ],
+        "javaTemplate": "import java.util.PriorityQueue; class Solution { public int findKthLargest(int[] nums, int k) { return 0; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def findKthLargest(self, nums: List[int], k: int) -> int:\n        pass",
+        "cppTemplate": "import <queue>\nclass Solution { public: int findKthLargest(vector<int>& nums, int k) { return 0; } };"
+      },
+      {
+        "id": 102,
+        "title": "Top K Frequent Elements",
+        "difficulty": "Medium",
+        "description": "Given an integer array `nums` and an integer `k`, return the `k` most frequent elements. You may return the answer in any order.",
+        "examples": [
+          {
+            "input": "nums = [1,1,1,2,2,3], k = 2",
+            "output": "[1,2]"
+          }
+        ],
+        "constraints": [
+          "1 <= nums.length <= 10^5",
+          "1 <= k <= the number of unique elements"
+        ],
+        "testCases": [
+          { "input": { "nums": [1,1,1,2,2,3], "k": 2 }, "output": [1,2] },
+          { "input": { "nums": [1], "k": 1 }, "output": [1] },
+          { "input": { "nums": [1,2,3,4,5], "k": 3 }, "output": [1,2,3] }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int[] topKFrequent(int[] nums, int k) { return new int[0]; } }",
+        "pythonTemplate": "import collections\nimport heapq\nclass Solution:\n    def topKFrequent(self, nums: List[int], k: int) -> List[int]:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nimport <unordered_map>\nclass Solution { public: vector<int> topKFrequent(vector<int>& nums, int k) { return {}; } };"
+      },
+      {
+        "id": 103,
+        "title": "Merge k Sorted Lists",
+        "difficulty": "Hard",
+        "description": "You are given an array of `k` sorted linked lists `lists`. Merge all the linked lists into one sorted linked list and return it. You can use a min-heap to efficiently find the next smallest node across all lists.",
+        "examples": [
+          {
+            "input": "lists = [[1,4,5],[1,3,4],[2,6]]",
+            "output": "[1,1,2,3,4,4,5,6]"
+          }
+        ],
+        "constraints": [
+          "k == lists.length",
+          "0 <= k <= 10^4"
+        ],
+        "testCases": [
+          { "input": { "lists": [[1,4,5],[1,3,4],[2,6]] }, "output": [1,1,2,3,4,4,5,6] },
+          { "input": { "lists": [] }, "output": [] },
+          { "input": { "lists": [[]] }, "output": [] }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public ListNode mergeKLists(ListNode[] lists) { return null; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nclass Solution { public: ListNode* mergeKLists(vector<ListNode*>& lists) { return nullptr; } };"
+      },
+      {
+        "id": 104,
+        "title": "Find Median from Data Stream",
+        "difficulty": "Hard",
+        "description": "The median is the middle value in an ordered integer list. If the size is even, there is no single middle value and the median is the average of the two middle values. Design a data structure that supports the following two operations: `addNum(int num)` and `findMedian()`. Use two heaps to maintain the lower half and upper half of the numbers.",
+        "examples": [
+          {
+            "input": "[\"MedianFinder\", \"addNum\", \"addNum\", \"findMedian\", \"addNum\", \"findMedian\"]<br>[[], [1], [2], [], [3], []]",
+            "output": "[null, null, null, 1.5, null, 2.0]"
+          }
+        ],
+        "constraints": [
+          "`addNum` will be called at most 5 \times 10^4 times."
+        ],
+        "testCases": [
+          { "input": { "operations": ["MedianFinder", "addNum", "addNum", "findMedian"], "values": [[], [1], [2], []] }, "output": [null, null, null, 1.5] },
+          { "input": { "operations": ["MedianFinder", "addNum", "findMedian"], "values": [[], [1], []] }, "output": [null, null, 1.0] },
+          { "input": { "operations": ["MedianFinder", "addNum", "addNum", "addNum", "findMedian"], "values": [[], [1], [2], [3], []] }, "output": [null, null, null, null, 2.0] }
+        ],
+        "javaTemplate": "import java.util.*;\nclass MedianFinder { public MedianFinder() { } public void addNum(int num) { } public double findMedian() { return 0.0; } }",
+        "pythonTemplate": "import heapq\nclass MedianFinder:\n    def __init__(self):\n        pass\n    def addNum(self, num: int) -> None:\n        pass\n    def findMedian(self) -> float:\n        pass",
+        "cppTemplate": "import <queue>\nclass MedianFinder { public: MedianFinder() { } void addNum(int num) { } double findMedian() { return 0.0; } };"
+      },
+      {
+        "id": 105,
+        "title": "Sliding Window Maximum",
+        "difficulty": "Hard",
+        "description": "You are given an array of integers `nums`, there is a sliding window of size `k` which is moving from the very left of the array to the very right. You can only see the `k` numbers in the window. Each time the sliding window moves right by one position, you want to find the maximum element in the window. Use a max-heap to solve this problem.",
+        "examples": [
+          {
+            "input": "nums = [1,3,-1,-3,5,3,6,7], k = 3",
+            "output": "[3,3,5,5,6,7]"
+          }
+        ],
+        "constraints": [
+          "1 <= nums.length <= 10^5",
+          "1 <= k <= nums.length"
+        ],
+        "testCases": [
+          { "input": { "nums": [1,3,-1,-3,5,3,6,7], "k": 3 }, "output": [3,3,5,5,6,7] },
+          { "input": { "nums": [1], "k": 1 }, "output": [1] },
+          { "input": { "nums": [1,-1], "k": 1 }, "output": [1,-1] }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int[] maxSlidingWindow(int[] nums, int k) { return new int[0]; } }",
+        "pythonTemplate": "import heapq\nfrom collections import deque\nclass Solution:\n    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nimport <deque>\nclass Solution { public: vector<int> maxSlidingWindow(vector<int>& nums, int k) { return {}; } };"
+      },
+      {
+        "id": 106,
+        "title": "Meeting Rooms II",
+        "difficulty": "Medium",
+        "description": "Given an array of meeting time intervals `intervals`, where `intervals[i] = [start_i, end_i]`, return the minimum number of conference rooms required. A min-heap can be used to track the earliest available meeting room.",
+        "examples": [
+          {
+            "input": "intervals = [[0,30],[5,10],[15,20]]",
+            "output": "2"
+          }
+        ],
+        "constraints": [
+          "1 <= intervals.length <= 10^4"
+        ],
+        "testCases": [
+          { "input": { "intervals": [[0,30],[5,10],[15,20]] }, "output": 2 },
+          { "input": { "intervals": [[7,10],[2,4]] }, "output": 1 },
+          { "input": { "intervals": [[9,10],[4,9],[4,17]] }, "output": 2 }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int minMeetingRooms(int[][] intervals) { return 0; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def minMeetingRooms(self, intervals: List[List[int]]) -> int:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nimport <algorithm>\nclass Solution { public: int minMeetingRooms(vector<vector<int>>& intervals) { return 0; } };"
+      },
+      {
+        "id": 107,
+        "title": "Task Scheduler",
+        "difficulty": "Medium",
+        "description": "Given a character array `tasks` representing the tasks a CPU needs to do, where each letter represents a different task. Tasks can be done in any order. Each task takes one unit of time. For each unit of time, the CPU can either complete a task or be idle. However, there is a non-negative integer `n` that represents the cooldown period between two same tasks. Return the minimum number of units of time the CPU will need to finish all the given tasks. Use a max-heap to always pick the most frequent task.",
+        "examples": [
+          {
+            "input": "tasks = [\"A\",\"A\",\"A\",\"B\",\"B\",\"B\"], n = 2",
+            "output": "8"
+          }
+        ],
+        "constraints": [
+          "1 <= tasks.length <= 10^4"
+        ],
+        "testCases": [
+          { "input": { "tasks": ["A","A","A","B","B","B"], "n": 2 }, "output": 8 },
+          { "input": { "tasks": ["A","A","A","B","B","B"], "n": 0 }, "output": 6 },
+          { "input": { "tasks": ["A","A","A","A","A","A","B","C","D","E","F","G"], "n": 2 }, "output": 16 }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int leastInterval(char[] tasks, int n) { return 0; } }",
+        "pythonTemplate": "import collections\nimport heapq\nclass Solution:\n    def leastInterval(self, tasks: List[str], n: int) -> int:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nimport <unordered_map>\nclass Solution { public: int leastInterval(vector<char>& tasks, int n) { return 0; } };"
+      },
+      {
+        "id": 108,
+        "title": "Reorganize String",
+        "difficulty": "Medium",
+        "description": "Given a string `s`, rearrange the characters of `s` so that any two adjacent characters are not the same. Return any possible rearrangement of `s` or return an empty string if not possible. Use a max-heap to prioritize characters with higher frequencies.",
+        "examples": [
+          {
+            "input": "s = \"aab\"",
+            "output": "\"aba\""
+          }
+        ],
+        "constraints": [
+          "1 <= s.length <= 500"
+        ],
+        "testCases": [
+          { "input": { "s": "aab" }, "output": "aba" },
+          { "input": { "s": "aaab" }, "output": "" },
+          { "input": { "s": "vvvlo" }, "output": "vlvov" }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public String reorganizeString(String s) { return \"\"; } }",
+        "pythonTemplate": "import collections\nimport heapq\nclass Solution:\n    def reorganizeString(self, s: str) -> str:\n        pass",
+        "cppTemplate": "import <string>\nimport <queue>\nimport <unordered_map>\nclass Solution { public: string reorganizeString(string s) { return \"\"; } };"
+      },
+      {
+        "id": 109,
+        "title": "K Closest Points to Origin",
+        "difficulty": "Medium",
+        "description": "Given an array of points `points` on a 2D plane and an integer `k`, return the `k` points that are closest to the origin (0, 0). Use a max-heap to maintain the `k` closest points found so far.",
+        "examples": [
+          {
+            "input": "points = [[1,3],[-2,2]], k = 1",
+            "output": "[[-2,2]]"
+          }
+        ],
+        "constraints": [
+          "1 <= k <= points.length <= 10^4"
+        ],
+        "testCases": [
+          { "input": { "points": [[1,3],[-2,2]], "k": 1 }, "output": [[-2,2]] },
+          { "input": { "points": [[3,3],[5,-1],[-2,4]], "k": 2 }, "output": [[3,3],[-2,4]] },
+          { "input": { "points": [[0,1],[1,0]], "k": 2 }, "output": [[0,1],[1,0]] }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int[][] kClosest(int[][] points, int k) { return new int[0][0]; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nimport <cmath>\nclass Solution { public: vector<vector<int>> kClosest(vector<vector<int>>& points, int k) { return {}; } };"
+      },
+      {
+        "id": 110,
+        "title": "Furthest Building You Can Reach",
+        "difficulty": "Medium",
+        "description": "You are given an integer array `heights` representing the heights of buildings, some bricks, and some ladders. You can jump from building `i` to building `i+1`. If `heights[i+1] <= heights[i]`, you don't need bricks or ladders. If `heights[i+1] > heights[i]`, you need to use bricks or a ladder. Find the furthest building index you can reach.",
+        "examples": [
+          {
+            "input": "heights = [4,2,7,6,9,14,12], bricks = 5, ladders = 1",
+            "output": "4"
+          }
+        ],
+        "constraints": [
+          "1 <= heights.length <= 10^5"
+        ],
+        "testCases": [
+          { "input": { "heights": [4,2,7,6,9,14,12], "bricks": 5, "ladders": 1 }, "output": 4 },
+          { "input": { "heights": [4,12,2,7,3,18,20,3,19], "bricks": 10, "ladders": 2 }, "output": 7 },
+          { "input": { "heights": [14,3,19,3], "bricks": 17, "ladders": 0 }, "output": 3 }
+        ],
+        "javaTemplate": "import java.util.PriorityQueue; class Solution { public int furthestBuilding(int[] heights, int bricks, int ladders) { return 0; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nclass Solution { public: int furthestBuilding(vector<int>& heights, int bricks, int ladders) { return 0; } };"
+      },
+      {
+        "id": 111,
+        "title": "Find K Pairs with Smallest Sums",
+        "difficulty": "Medium",
+        "description": "You are given two integer arrays `nums1` and `nums2` sorted in ascending order and an integer `k`. Define a pair (u,v) where u is from `nums1` and v is from `nums2`. Find the `k` pairs with the smallest sums.",
+        "examples": [
+          {
+            "input": "nums1 = [1,7,11], nums2 = [2,4,6], k = 3",
+            "output": "[[1,2],[1,4],[1,6]]"
+          }
+        ],
+        "constraints": [
+          "1 <= k <= 1000"
+        ],
+        "testCases": [
+          { "input": { "nums1": [1,7,11], "nums2": [2,4,6], "k": 3 }, "output": [[1,2],[1,4],[1,6]] }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) { return null; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def kSmallestPairs(self, nums1: List[int], nums2: List[int], k: int) -> List[List[int]]:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nclass Solution { public: vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) { return {}; } };"
+      },
+      {
+        "id": 112,
+        "title": "Car Pooling",
+        "difficulty": "Medium",
+        "description": "You are driving a vehicle that has `capacity` empty seats. You are given an array `trips`, where `trips[i] = [numPassengers, from, to]` represents the trip of the i-th passenger. The trip includes picking up `numPassengers` passengers at location `from` and dropping them off at location `to`. Return `true` if it is possible to pick up and drop off all passengers, or `false` otherwise. This can be solved with a min-heap to track drop-off times.",
+        "examples": [
+          {
+            "input": "trips = [[2,1,5],[3,3,7]], capacity = 4",
+            "output": "false"
+          }
+        ],
+        "constraints": [
+          "1 <= trips.length <= 1000"
+        ],
+        "testCases": [
+          { "input": { "trips": [[2,1,5],[3,3,7]], "capacity": 4 }, "output": false }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public boolean carPooling(int[][] trips, int capacity) { return false; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def carPooling(self, trips: List[List[int]], capacity: int) -> bool:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nimport <algorithm>\nclass Solution { public: bool carPooling(vector<vector<int>>& trips, int capacity) { return false; } };"
+      },
+      {
+        "id": 113,
+        "title": "Meeting Rooms III",
+        "difficulty": "Hard",
+        "description": "You are given `n` rooms and an array of meetings `meetings` where `meetings[i] = [start, end]` represents a meeting's start and end time. Return the number of the room that held the most meetings. A min-heap can be used to track the earliest available time for each room.",
+        "examples": [
+          {
+            "input": "n = 2, meetings = [[0,10],[1,5],[2,7],[3,4]]",
+            "output": "0"
+          }
+        ],
+        "constraints": [
+          "1 <= n <= 100"
+        ],
+        "testCases": [
+          { "input": { "n": 2, "meetings": [[0,10],[1,5],[2,7],[3,4]] }, "output": 0 }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int mostBooked(int n, int[][] meetings) { return 0; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def mostBooked(self, n: int, meetings: List[List[int]]) -> int:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nimport <algorithm>\nclass Solution { public: int mostBooked(int n, vector<vector<int>>& meetings) { return 0; } };"
+      },
+      {
+        "id": 114,
+        "title": "Minimize Deviation in Array",
+        "difficulty": "Hard",
+        "description": "You are given an array `nums` of `n` positive integers. You can perform two types of operations: if an element is even, you can divide it by 2; if an element is odd, you can multiply it by 2. The deviation of the array is the maximum difference between any two elements in the array. Return the minimum deviation you can achieve.",
+        "examples": [
+          {
+            "input": "nums = [1,2,3,4]",
+            "output": "1"
+          }
+        ],
+        "constraints": [
+          "2 <= n <= 5 \times 10^4"
+        ],
+        "testCases": [
+          { "input": { "nums": [1,2,3,4] }, "output": 1 }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int minimumDeviation(int[] nums) { return 0; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def minimumDeviation(self, nums: List[int]) -> int:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nimport <set>\nclass Solution { public: int minimumDeviation(vector<int>& nums) { return 0; } };"
+      },
+      {
+        "id": 115,
+        "title": "Smallest Range Covering K Lists",
+        "difficulty": "Hard",
+        "description": "You have `k` lists of sorted integers in non-decreasing order. Find the smallest range that includes at least one number from each of the `k` lists. Use a min-heap to keep track of the smallest element from each of the lists.",
+        "examples": [
+          {
+            "input": "nums = [[4,10,15,24,26], [0,9,12,20], [5,18,22,30]]",
+            "output": "[20,24]"
+          }
+        ],
+        "constraints": [
+          "1 <= k <= 3500"
+        ],
+        "testCases": [
+          { "input": { "nums": [[4,10,15,24,26], [0,9,12,20], [5,18,22,30]] }, "output": [20,24] }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int[] smallestRange(List<List<Integer>> nums) { return new int[0]; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def smallestRange(self, nums: List[List[int]]) -> List[int]:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nclass Solution { public: vector<int> smallestRange(vector<vector<int>>& nums) { return {}; } };"
+      },
+      {
+        "id": 116,
+        "title": "Trapping Rain Water II",
+        "difficulty": "Hard",
+        "description": "Given an m \times n integer matrix `heightMap` representing an elevation map, return the total volume of water it can trap after raining. This is a 2D version of the famous 'trapping rain water' problem and can be solved using a min-heap to simulate water filling.",
+        "examples": [
+          {
+            "input": "heightMap = [[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]]",
+            "output": "4"
+          }
+        ],
+        "constraints": [
+          "1 <= m, n <= 200"
+        ],
+        "testCases": [
+          { "input": { "heightMap": [[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]] }, "output": 4 }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int trapRainWater(int[][] heightMap) { return 0; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def trapRainWater(self, heightMap: List[List[int]]) -> int:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nclass Solution { public: int trapRainWater(vector<vector<int>>& heightMap) { return 0; } };"
+      },
+      {
+        "id": 117,
+        "title": "IPO",
+        "difficulty": "Hard",
+        "description": "Suppose LeetCode will start its IPO soon. You are given a number of projects and for each project you can acquire a certain profit after a minimum amount of capital. You are also given your initial capital. You can only undertake at most `k` projects. You can start a project only if you have enough capital. Once a project is completed, the profit will be added to your capital. Find the maximum final capital. A min-heap and a max-heap can be used together to efficiently manage projects.",
+        "examples": [
+          {
+            "input": "k = 2, w = 0, profits = [1,2,3], capital = [0,1,1]",
+            "output": "4"
+          }
+        ],
+        "constraints": [
+          "1 <= k <= 10^5"
+        ],
+        "testCases": [
+          { "input": { "k": 2, "w": 0, "profits": [1,2,3], "capital": [0,1,1] }, "output": 4 }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) { return 0; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nimport <algorithm>\nclass Solution { public: int findMaximizedCapital(int k, int w, vector<int>& profits, vector<int>& capital) { return 0; } };"
+      },
+      {
+        "id": 118,
+        "title": "Super Ugly Number",
+        "difficulty": "Medium",
+        "description": "A super ugly number is a positive integer whose prime factors are in a given integer array `primes` sorted in ascending order. Given an integer `n` and a sorted integer array `primes`, return the n^{th} super ugly number. Use a min-heap to generate the numbers and a set to avoid duplicates.",
+        "examples": [
+          {
+            "input": "n = 12, primes = [2,7,13,19]",
+            "output": "32"
+          }
+        ],
+        "constraints": [
+          "1 <= n <= 10^6"
+        ],
+        "testCases": [
+          { "input": { "n": 12, "primes": [2,7,13,19] }, "output": 32 }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int nthSuperUglyNumber(int n, int[] primes) { return 0; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def nthSuperUglyNumber(self, n: int, primes: List[int]) -> int:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nimport <unordered_set>\nclass Solution { public: int nthSuperUglyNumber(int n, vector<int>& primes) { return 0; } };"
+      },
+      {
+        "id": 119,
+        "title": "Ugly Number II",
+        "difficulty": "Medium",
+        "description": "An ugly number is a positive integer whose prime factors are limited to 2, 3, and 5. Given an integer `n`, return the n^{th} ugly number. A min-heap can be used to generate ugly numbers in increasing order.",
+        "examples": [
+          {
+            "input": "n = 10",
+            "output": "12"
+          }
+        ],
+        "constraints": [
+          "1 <= n <= 1690"
+        ],
+        "testCases": [
+          { "input": { "n": 10 }, "output": 12 }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int nthUglyNumber(int n) { return 0; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def nthUglyNumber(self, n: int) -> int:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nimport <unordered_set>\nclass Solution { public: int nthUglyNumber(int n) { return 0; } };"
+      },
+      {
+        "id": 120,
+        "title": "Last Stone Weight",
+        "difficulty": "Easy",
+        "description": "We have a collection of stones, each stone having a positive integer weight. On each turn, we choose the two heaviest stones and smash them together. Suppose the heaviest two stones have weights `x` and `y` with x \n e y. The result of the smash is as follows: if x == y, both stones are destroyed. If x \ne y, the stone of weight `x` is destroyed, and the stone of weight `y` has new weight y-x. At the end, there is at most one stone left. Return the weight of this stone (or 0 if no stones are left). A max-heap is an ideal data structure for this problem.",
+        "examples": [
+          {
+            "input": "stones = [2,7,4,1,8,1]",
+            "output": "1"
+          }
+        ],
+        "constraints": [
+          "1 <= stones.length <= 30",
+          "1 <= stones[i] <= 1000"
+        ],
+        "testCases": [
+          { "input": { "stones": [2,7,4,1,8,1] }, "output": 1 }
+        ],
+        "javaTemplate": "import java.util.*;\nclass Solution { public int lastStoneWeight(int[] stones) { return 0; } }",
+        "pythonTemplate": "import heapq\nclass Solution:\n    def lastStoneWeight(self, stones: List[int]) -> int:\n        pass",
+        "cppTemplate": "import <vector>\nimport <queue>\nclass Solution { public: int lastStoneWeight(vector<int>& stones) { return 0; } };"
+      }
+    ]
+  }
+  

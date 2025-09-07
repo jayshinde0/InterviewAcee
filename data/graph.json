@@ -1,0 +1,447 @@
+{
+    "category": "Graph",
+    "problems": [
+      {
+        "id": 81,
+        "title": "Number of Islands",
+        "difficulty": "Medium",
+        "description": "Given an $m \times n$ 2D binary grid `grid` which represents a map of '1's (land) and '0's (water), return the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.",
+        "examples": [
+          {
+            "input": "grid = [[\"1\",\"1\",\"1\",\"1\",\"0\"],[\"1\",\"1\",\"0\",\"1\",\"0\"],[\"1\",\"1\",\"0\",\"0\",\"0\"],[\"0\",\"0\",\"0\",\"0\",\"0\"]]",
+            "output": "1"
+          }
+        ],
+        "constraints": [
+          "$m == grid.length$",
+          "$n == grid[i].length$",
+          "$1 <= m, n <= 300$",
+          "`grid[i][j]` is '0' or '1'."
+        ],
+        "testCases": [
+          { "input": { "grid": [["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]] }, "output": 1 },
+          { "input": { "grid": [["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]] }, "output": 3 },
+          { "input": { "grid": [["1"]] }, "output": 1 }
+        ],
+        "javaTemplate": "class Solution { public int numIslands(char[][] grid) { return 0; } }",
+        "pythonTemplate": "class Solution: def numIslands(self, grid: List[List[str]]) -> int: pass",
+        "cppTemplate": "class Solution { public: int numIslands(vector<vector<char>>& grid) { return 0; } };"
+      },
+      {
+        "id": 82,
+        "title": "Clone Graph",
+        "difficulty": "Medium",
+        "description": "Given a reference of a node in a connected undirected graph, return a deep copy (clone) of the graph. Each node in the graph contains a value and a list of its neighbors.",
+        "examples": [
+          {
+            "input": "adjList = [[2,4],[1,3],[2,4],[1,3]]",
+            "output": "[[2,4],[1,3],[2,4],[1,3]]"
+          }
+        ],
+        "constraints": [
+          "The number of nodes in the graph is in the range $[0, 100]$"
+        ],
+        "testCases": [
+          { "input": { "adjList": [[2,4],[1,3],[2,4],[1,3]] }, "output": [[2,4],[1,3],[2,4],[1,3]] },
+          { "input": { "adjList": [[]] }, "output": [[]] },
+          { "input": { "adjList": [] }, "output": [] }
+        ],
+        "javaTemplate": "class Solution { public Node cloneGraph(Node node) { return null; } }",
+        "pythonTemplate": "class Solution: def cloneGraph(self, node: 'Node') -> 'Node': pass",
+        "cppTemplate": "class Solution { public: Node* cloneGraph(Node* node) { return nullptr; } };"
+      },
+      {
+        "id": 83,
+        "title": "Course Schedule I",
+        "difficulty": "Medium",
+        "description": "There are a total of `numCourses` courses you have to take, labeled from $0$ to `numCourses - 1`. You are given an array `prerequisites` where `prerequisites[i] = [a_i, b_i]` indicates that you must take course `b_i` first if you want to take course `a_i`. Return `true` if you can finish all courses, otherwise return `false`.",
+        "examples": [
+          {
+            "input": "numCourses = 2, prerequisites = [[1,0]]",
+            "output": "true"
+          }
+        ],
+        "constraints": [
+          "$1 <= numCourses <= 2000$",
+          "$0 <= prerequisites.length <= 5000$"
+        ],
+        "testCases": [
+          { "input": { "numCourses": 2, "prerequisites": [[1,0]] }, "output": true }
+        ],
+        "javaTemplate": "class Solution { public boolean canFinish(int numCourses, int[][] prerequisites) { return false; } }",
+        "pythonTemplate": "class Solution: def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool: pass",
+        "cppTemplate": "class Solution { public: bool canFinish(int numCourses, vector<vector<int>>& prerequisites) { return false; } };"
+      },
+      {
+        "id": 84,
+        "title": "Course Schedule II",
+        "difficulty": "Medium",
+        "description": "There are a total of `numCourses` courses you have to take, labeled from $0$ to `numCourses - 1`. Some courses may have prerequisites. Return the ordering of courses you should take to finish all courses. If there are multiple valid orderings, return any of them. If it is impossible to finish all courses, return an empty array.",
+        "examples": [
+          {
+            "input": "numCourses = 2, prerequisites = [[1,0]]",
+            "output": "[0,1]"
+          }
+        ],
+        "constraints": [
+          "$1 <= numCourses <= 2000$"
+        ],
+        "testCases": [
+          { "input": { "numCourses": 2, "prerequisites": [[1,0]] }, "output": [0,1] }
+        ],
+        "javaTemplate": "class Solution { public int[] findOrder(int numCourses, int[][] prerequisites) { return new int[0]; } }",
+        "pythonTemplate": "class Solution: def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]: pass",
+        "cppTemplate": "class Solution { public: vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) { return {}; } };"
+      },
+      {
+        "id": 85,
+        "title": "Pacific Atlantic Water Flow",
+        "difficulty": "Medium",
+        "description": "Given an $m \times n$ matrix of heights, return a list of grid coordinates where water can flow to both the Pacific and Atlantic oceans. The Pacific ocean touches the top and left edges, and the Atlantic ocean touches the bottom and right edges.",
+        "examples": [
+          {
+            "input": "heights = [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]",
+            "output": "[[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]"
+          }
+        ],
+        "constraints": [
+          "$m == heights.length$",
+          "$n == heights[i].length$",
+          "$1 <= m, n <= 200$"
+        ],
+        "testCases": [
+          { "input": { "heights": [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]] }, "output": [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]] }
+        ],
+        "javaTemplate": "class Solution { public List<List<Integer>> pacificAtlantic(int[][] heights) { return null; } }",
+        "pythonTemplate": "class Solution: def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]: pass",
+        "cppTemplate": "class Solution { public: vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) { return {}; } };"
+      },
+      {
+        "id": 86,
+        "title": "Rotting Oranges",
+        "difficulty": "Medium",
+        "description": "You are given an $m \times n$ grid where each cell can have one of three values: 0 (empty cell), 1 (fresh orange), or 2 (rotten orange). Every minute, any fresh orange that is 4-directionally adjacent to a rotten orange becomes rotten. Return the minimum number of minutes that must elapse until no fresh oranges remain. If this is impossible, return -1.",
+        "examples": [
+          {
+            "input": "grid = [[2,1,1],[1,1,0],[0,1,1]]",
+            "output": "4"
+          }
+        ],
+        "constraints": [
+          "$m == grid.length$",
+          "$n == grid[i].length$",
+          "$1 <= m, n <= 10$"
+        ],
+        "testCases": [
+          { "input": { "grid": [[2,1,1],[1,1,0],[0,1,1]] }, "output": 4 }
+        ],
+        "javaTemplate": "class Solution { public int orangesRotting(int[][] grid) { return 0; } }",
+        "pythonTemplate": "class Solution: def orangesRotting(self, grid: List[List[int]]) -> int: pass",
+        "cppTemplate": "class Solution { public: int orangesRotting(vector<vector<int>>& grid) { return 0; } };"
+      },
+      {
+        "id": 87,
+        "title": "Surrounded Regions",
+        "difficulty": "Medium",
+        "description": "Given an $m \times n$ matrix `board` containing 'X' and 'O', capture all regions that are 4-directionally surrounded by 'X'. A region is captured by flipping all 'O's into 'X's in that surrounded region.",
+        "examples": [
+          {
+            "input": "board = [[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"O\",\"O\",\"X\"],[\"X\",\"X\",\"O\",\"X\"],[\"X\",\"O\",\"X\",\"X\"]]",
+            "output": "[[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"O\",\"X\",\"X\"]]"
+          }
+        ],
+        "constraints": [
+          "$m == board.length$",
+          "$n == board[i].length$",
+          "$1 <= m, n <= 200$",
+          "board[i][j] is 'X' or 'O'."
+        ],
+        "testCases": [
+          { "input": { "board": [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]] }, "output": [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]] }
+        ],
+        "javaTemplate": "class Solution { public void solve(char[][] board) { } }",
+        "pythonTemplate": "class Solution: def solve(self, board: List[List[str]]) -> None: pass",
+        "cppTemplate": "class Solution { public: void solve(vector<vector<char>>& board) { } };"
+      },
+      {
+        "id": 88,
+        "title": "Graph Valid Tree",
+        "difficulty": "Medium",
+        "description": "You have a graph of `n` nodes labeled from $0$ to `n - 1`. You are given an integer `n` and a list of `edges` where `edges[i] = [a, b]` indicates that there is an undirected edge between nodes `a` and `b`. Return `true` if the given graph is a valid tree, and `false` otherwise.",
+        "examples": [
+          {
+            "input": "n = 5, edges = [[0,1],[0,2],[0,3],[1,4]]",
+            "output": "true"
+          }
+        ],
+        "constraints": [
+          "$1 <= n <= 2000$",
+          "$0 <= edges.length <= 5000$"
+        ],
+        "testCases": [
+          { "input": { "n": 5, "edges": [[0,1],[0,2],[0,3],[1,4]] }, "output": true }
+        ],
+        "javaTemplate": "class Solution { public boolean validTree(int n, int[][] edges) { return false; } }",
+        "pythonTemplate": "class Solution: def validTree(self, n: int, edges: List[List[int]]) -> bool: pass",
+        "cppTemplate": "class Solution { public: bool validTree(int n, vector<vector<int>>& edges) { return false; } };"
+      },
+      {
+        "id": 89,
+        "title": "Evaluate Division",
+        "difficulty": "Medium",
+        "description": "You are given an array of variable pairs `equations` and an array of real numbers `values`, where `equations[i] = [A, B]` and `values[i]` represent the equation $A / B = values[i]$. You are also given an array of `queries`, where `queries[j] = [C, D]` represents the j-th query asking for the value of $C / D$. Return the answers to all queries.",
+        "examples": [
+          {
+            "input": "equations = [[\"a\",\"b\"],[\"b\",\"c\"]], values = [2.0,3.0], queries = [[\"a\",\"c\"],[\"b\",\"a\"],[\"a\",\"e\"],[\"a\",\"a\"],[\"x\",\"x\"]]",
+            "output": "[6.0, 0.5, -1.0, 1.0, -1.0]"
+          }
+        ],
+        "constraints": [
+          "$1 <= equations.length <= 20$"
+        ],
+        "testCases": [
+          { "input": { "equations": [["a","b"],["b","c"]], "values": [2.0,3.0], "queries": [["a","c"],["b","a"]] }, "output": [6.0, 0.5] }
+        ],
+        "javaTemplate": "class Solution { public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) { return new double[0]; } }",
+        "pythonTemplate": "class Solution: def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]: pass",
+        "cppTemplate": "class Solution { public: vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) { return {}; } };"
+      },
+      {
+        "id": 90,
+        "title": "Network Delay Time",
+        "difficulty": "Medium",
+        "description": "There are `n` network nodes labeled from $1$ to `n`. You are given `times`, a list of travel times as directed edges `times[i] = (u, v, w)`, where `u` is the source node, `v` is the target node, and `w` is the time it takes for a signal to travel from `u` to `v`. We send a signal from a given node `k`. Return the minimum time it takes for all the `n` nodes to receive the signal. If it is impossible for all nodes to receive the signal, return -1.",
+        "examples": [
+          {
+            "input": "times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2",
+            "output": "2"
+          }
+        ],
+        "constraints": [
+          "$1 <= n <= 100$",
+          "$1 <= k <= n$"
+        ],
+        "testCases": [
+          { "input": { "times": [[2,1,1],[2,3,1],[3,4,1]], "n": 4, "k": 2 }, "output": 2 }
+        ],
+        "javaTemplate": "class Solution { public int networkDelayTime(int[][] times, int n, int k) { return 0; } }",
+        "pythonTemplate": "class Solution: def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int: pass",
+        "cppTemplate": "class Solution { public: int networkDelayTime(vector<vector<int>>& times, int n, int k) { return 0; } };"
+      },
+      {
+        "id": 91,
+        "title": "Keys and Rooms",
+        "difficulty": "Medium",
+        "description": "There are `n` rooms labeled from $0$ to `n - 1`, and all the rooms are locked except for room 0. Each room has a list of keys to other rooms. You can enter any room only if you have a key to it. When you are in a room, you can take all the keys in that room. Return `true` if and only if you can visit all the rooms.",
+        "examples": [
+          {
+            "input": "rooms = [[1],[2],[3],[]]",
+            "output": "true"
+          }
+        ],
+        "constraints": [
+          "$1 <= n <= 1000$",
+          "$0 <= rooms[i].length <= 1000$"
+        ],
+        "testCases": [
+          { "input": { "rooms": [[1],[2],[3],[]] }, "output": true }
+        ],
+        "javaTemplate": "class Solution { public boolean canVisitAllRooms(List<List<Integer>> rooms) { return false; } }",
+        "pythonTemplate": "class Solution: def canVisitAllRooms(self, rooms: List[List[int]]) -> bool: pass",
+        "cppTemplate": "class Solution { public: bool canVisitAllRooms(vector<vector<int>>& rooms) { return false; } };"
+      },
+      {
+        "id": 92,
+        "title": "Is Graph Bipartite?",
+        "difficulty": "Medium",
+        "description": "Given an undirected graph, return `true` if and only if it is bipartite. A graph is bipartite if we can split its set of nodes into two independent subsets `A` and `B` such that every edge in the graph connects a node in `A` to a node in `B`.",
+        "examples": [
+          {
+            "input": "graph = [[1,2,3],[0,2],[0,1,3],[0,2]]",
+            "output": "false"
+          }
+        ],
+        "constraints": [
+          "The number of nodes is in the range $[1, 100]$"
+        ],
+        "testCases": [
+          { "input": { "graph": [[1,2,3],[0,2],[0,1,3],[0,2]] }, "output": false }
+        ],
+        "javaTemplate": "class Solution { public boolean isBipartite(int[][] graph) { return false; } }",
+        "pythonTemplate": "class Solution: def isBipartite(self, graph: List[List[int]]) -> bool: pass",
+        "cppTemplate": "class Solution { public: bool isBipartite(vector<vector<int>>& graph) { return false; } };"
+      },
+      {
+        "id": 93,
+        "title": "Word Ladder",
+        "difficulty": "Hard",
+        "description": "Given two words, `beginWord` and `endWord`, and a dictionary `wordList`, return the length of the shortest transformation sequence from `beginWord` to `endWord`, such that: Only one letter can be changed at a time. Each intermediate word must exist in the `wordList`. If there is no such sequence, return 0.",
+        "examples": [
+          {
+            "input": "beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]",
+            "output": "5"
+          }
+        ],
+        "constraints": [
+          "$1 <= beginWord.length <= 10$"
+        ],
+        "testCases": [
+          { "input": { "beginWord": "hit", "endWord": "cog", "wordList": ["hot","dot","dog","lot","log","cog"] }, "output": 5 }
+        ],
+        "javaTemplate": "class Solution { public int ladderLength(String beginWord, String endWord, List<String> wordList) { return 0; } }",
+        "pythonTemplate": "class Solution: def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int: pass",
+        "cppTemplate": "class Solution { public: int ladderLength(string beginWord, string endWord, vector<string>& wordList) { return 0; } };"
+      },
+      {
+        "id": 94,
+        "title": "Word Ladder II",
+        "difficulty": "Hard",
+        "description": "Given two words, `beginWord` and `endWord`, and a dictionary `wordList`, return all shortest transformation sequences from `beginWord` to `endWord`, such that: Only one letter can be changed at a time. Each intermediate word must exist in the `wordList`. If there is no such sequence, return an empty list.",
+        "examples": [
+          {
+            "input": "beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]",
+            "output": "[[\"hit\",\"hot\",\"dot\",\"dog\",\"cog\"],[\"hit\",\"hot\",\"lot\",\"log\",\"cog\"]]"
+          }
+        ],
+        "constraints": [
+          "$1 <= beginWord.length <= 5$"
+        ],
+        "testCases": [
+          { "input": { "beginWord": "hit", "endWord": "cog", "wordList": ["hot","dot","dog","lot","log","cog"] }, "output": [["hit","hot","dot","dog","cog"],["hit","hot","lot","log","cog"]] }
+        ],
+        "javaTemplate": "class Solution { public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) { return null; } }",
+        "pythonTemplate": "class Solution: def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]: pass",
+        "cppTemplate": "class Solution { public: vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) { return {}; } };"
+      },
+      {
+        "id": 95,
+        "title": "Critical Connections in a Network",
+        "difficulty": "Hard",
+        "description": "There are `n` servers numbered from $0$ to `n - 1` connected by undirected server-to-server `connections` forming a network. A critical connection is a connection that, if removed, will make some servers unable to reach some other servers. Return all critical connections in the network in any order.",
+        "examples": [
+          {
+            "input": "n = 4, connections = [[0,1],[1,2],[2,0],[1,3]]",
+            "output": "[[1,3]]"
+          }
+        ],
+        "constraints": [
+          "$1 <= n <= 10^5$"
+        ],
+        "testCases": [
+          { "input": { "n": 4, "connections": [[0,1],[1,2],[2,0],[1,3]] }, "output": [[1,3]] }
+        ],
+        "javaTemplate": "class Solution { public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) { return null; } }",
+        "pythonTemplate": "class Solution: def criticalConnections(self, n: int, connections: List[List[int]]) -> List[List[int]]: pass",
+        "cppTemplate": "class Solution { public: vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) { return {}; } };"
+      },
+      {
+        "id": 96,
+        "title": "Reconstruct Itinerary",
+        "difficulty": "Hard",
+        "description": "You are given a list of airline tickets where `tickets[i] = [from, to]` represent the departure and arrival airports of a flight. Reconstruct the itinerary in order. All of the tickets belong to a man who departs from JFK. Thus, the itinerary must begin with 'JFK'. All tickets form a valid itinerary.",
+        "examples": [
+          {
+            "input": "tickets = [[\"MUC\",\"LHR\"],[\"JFK\",\"MUC\"],[\"SFO\",\"SJC\"],[\"LHR\",\"SFO\"]]",
+            "output": "[\"JFK\",\"MUC\",\"LHR\",\"SFO\",\"SJC\"]"
+          }
+        ],
+        "constraints": [
+          "$1 <= tickets.length <= 300$"
+        ],
+        "testCases": [
+          { "input": { "tickets": [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]] }, "output": ["JFK","MUC","LHR","SFO","SJC"] }
+        ],
+        "javaTemplate": "class Solution { public List<String> findItinerary(List<List<String>> tickets) { return null; } }",
+        "pythonTemplate": "class Solution: def findItinerary(self, tickets: List[List[str]]) -> List[str]: pass",
+        "cppTemplate": "class Solution { public: vector<string> findItinerary(vector<vector<string>>& tickets) { return {}; } };"
+      },
+      {
+        "id": 97,
+        "title": "Minimum Spanning Tree (Kruskal/Prim implementation)",
+        "difficulty": "Hard",
+        "description": "You are given a list of edges of an undirected graph. Each edge has a weight associated with it. Find the minimum cost to connect all nodes in the graph. The result should be the total weight of the edges in the minimum spanning tree. If it's not possible to form a single connected component, return -1.",
+        "examples": [
+          {
+            "input": "edges = [[0,1,10],[0,2,6],[0,3,5],[1,3,15],[2,3,4]]",
+            "output": "19"
+          }
+        ],
+        "constraints": [
+          "$1 <= n <= 100$"
+        ],
+        "testCases": [
+          { "input": { "edges": [[0,1,10],[0,2,6],[0,3,5],[1,3,15],[2,3,4]] }, "output": 19 }
+        ],
+        "javaTemplate": "class Solution { public int minCostConnectNodes(int n, int[][] edges) { return 0; } }",
+        "pythonTemplate": "class Solution: def minCostConnectNodes(self, n: int, edges: List[List[int]]) -> int: pass",
+        "cppTemplate": "class Solution { public: int minCostConnectNodes(int n, vector<vector<int>>& edges) { return 0; } };"
+      },
+      {
+        "id": 98,
+        "title": "All Paths from Source to Target",
+        "difficulty": "Medium",
+        "description": "Given a directed acyclic graph (DAG) of `n` nodes labeled from $0$ to `n - 1`, find all possible paths from node $0$ to node `n - 1` and return them in any order. The graph is given as a list of lists where `graph[i]` is a list of all nodes to which node `i` has a directed edge.",
+        "examples": [
+          {
+            "input": "graph = [[1,2],[3],[3],[]]",
+            "output": "[[0,1,3],[0,2,3]]"
+          }
+        ],
+        "constraints": [
+          "$n == graph.length$",
+          "$2 <= n <= 15$"
+        ],
+        "testCases": [
+          { "input": { "graph": [[1,2],[3],[3],[]] }, "output": [[0,1,3],[0,2,3]] }
+        ],
+        "javaTemplate": "class Solution { public List<List<Integer>> allPathsSourceTarget(int[][] graph) { return null; } }",
+        "pythonTemplate": "class Solution: def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]: pass",
+        "cppTemplate": "class Solution { public: vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) { return {}; } };"
+      },
+      {
+        "id": 99,
+        "title": "Cheapest Flights Within K Stops",
+        "difficulty": "Medium",
+        "description": "There are `n` cities connected by some number of flights. You are given an array `flights` where `flights[i] = [from_i, to_i, price_i]` represents a flight from city `from_i` to city `to_i` with a cost `price_i`. You are also given three integers `src`, `dst`, and `k`, return the cheapest price from `src` to `dst` with at most `k` stops. If there is no such flight, return -1.",
+        "examples": [
+          {
+            "input": "n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 1",
+            "output": "200"
+          }
+        ],
+        "constraints": [
+          "$1 <= n <= 100$"
+        ],
+        "testCases": [
+          { "input": { "n": 3, "flights": [[0,1,100],[1,2,100],[0,2,500]], "src": 0, "dst": 2, "k": 1 }, "output": 200 }
+        ],
+        "javaTemplate": "class Solution { public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) { return 0; } }",
+        "pythonTemplate": "class Solution: def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int: pass",
+        "cppTemplate": "class Solution { public: int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) { return 0; } };"
+      },
+      {
+        "id": 100,
+        "title": "Shortest Path in Binary Matrix",
+        "difficulty": "Medium",
+        "description": "Given an $n \times n$ binary matrix `grid`, return the length of the shortest clear path in the matrix. If there is no clear path, return -1. A clear path is a path from the top-left cell $(0, 0)$ to the bottom-right cell $(n-1, n-1)$ such that all visited cells are '0', and the path can move in 8 directions (up, down, left, right, and the four diagonals).",
+        "examples": [
+          {
+            "input": "grid = [[0,1],[1,0]]",
+            "output": "2"
+          }
+        ],
+        "constraints": [
+          "$n == grid.length$",
+          "$n == grid[i].length$",
+          "$1 <= n <= 100$"
+        ],
+        "testCases": [
+          { "input": { "grid": [[0,1],[1,0]] }, "output": 2 }
+        ],
+        "javaTemplate": "class Solution { public int shortestPathBinaryMatrix(int[][] grid) { return 0; } }",
+        "pythonTemplate": "class Solution: def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int: pass",
+        "cppTemplate": "class Solution { public: int shortestPathBinaryMatrix(vector<vector<int>>& grid) { return 0; } };"
+      }
+    ]
+  }
+  

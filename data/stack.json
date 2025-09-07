@@ -1,0 +1,469 @@
+{
+    "category": "Stack",
+    "problems": [
+      {
+        "id": 141,
+        "title": "Valid Parentheses",
+        "difficulty": "Easy",
+        "description": "Given a string `s` containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. An input string is valid if: 1. Open brackets must be closed by the same type of brackets. 2. Open brackets must be closed in the correct order. 3. Every close bracket has a corresponding open bracket of the same type.",
+        "examples": [
+          {
+            "input": "s = \"()\"",
+            "output": "true"
+          },
+          {
+            "input": "s = \"()[]{}\"",
+            "output": "true"
+          },
+          {
+            "input": "s = \"(]\"",
+            "output": "false"
+          }
+        ],
+        "constraints": [
+          "1 <= s.length <= 10^4"
+        ],
+        "testCases": [
+          { "input": { "s": "()" }, "output": true },
+          { "input": { "s": "()[]{}" }, "output": true },
+          { "input": { "s": "(]" }, "output": false }
+        ],
+        "javaTemplate": "class Solution { public boolean isValid(String s) { return false; } }",
+        "pythonTemplate": "class Solution: def isValid(self, s: str) -> bool: pass",
+        "cppTemplate": "class Solution { public: bool isValid(string s) { return false; } };"
+      },
+      {
+        "id": 142,
+        "title": "Min Stack",
+        "difficulty": "Easy",
+        "description": "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time. Implement the `MinStack` class: `MinStack()` initializes the stack object. `void push(int val)` pushes the element `val` onto the stack. `void pop()` removes the element on the top of the stack. `int top()` gets the top element of the stack. `int getMin()` retrieves the minimum element in the stack.",
+        "examples": [
+          {
+            "input": "[\"MinStack\",\"push\",\"push\",\"push\",\"getMin\",\"pop\",\"top\",\"getMin\"]",
+            "output": "[null,null,null,null,-3,null,0,-2]"
+          }
+        ],
+        "constraints": [
+          "-2^{31} <= val <= 2^{31} - 1",
+          "pop, top and getMin operations will always be called on non-empty stacks."
+        ],
+        "testCases": [
+          { "input": ["MinStack","push","push","push","getMin","pop","top","getMin"], "output": [null, null, null, null, -3, null, 0, -2] }
+        ],
+        "javaTemplate": "class MinStack { public MinStack() { } public void push(int val) { } public void pop() { } public int top() { return 0; } public int getMin() { return 0; } }",
+        "pythonTemplate": "class MinStack: def __init__(self): pass def push(self, val: int) -> None: pass def pop(self) -> None: pass def top(self) -> int: pass def getMin(self) -> int: pass",
+        "cppTemplate": "class MinStack { public: MinStack() { } void push(int val) { } void pop() { } int top() { return 0; } int getMin() { return 0; } };"
+      },
+      {
+        "id": 143,
+        "title": "Implement Stack using Queues",
+        "difficulty": "Easy",
+        "description": "Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (`push`, `top`, `pop`, and `empty`).",
+        "examples": [
+          {
+            "input": "[\"MyStack\", \"push\", \"push\", \"top\", \"pop\", \"empty\"]",
+            "output": "[null, null, null, 2, 2, false]"
+          }
+        ],
+        "constraints": [
+          "1 <= x <= 9",
+          "At most 100 calls will be made to push, pop, top, and empty.",
+          "All calls to pop and top are valid."
+        ],
+        "testCases": [
+          { "input": ["MyStack", "push", "push", "top", "pop", "empty"], "output": [null, null, null, 2, 2, false] },
+          { "input": ["MyStack", "push", "top", "pop", "empty"], "output": [null, null, 1, 1, true] },
+          { "input": ["MyStack", "push", "push", "push", "top"], "output": [null, null, null, null, 3] }
+        ],
+        "javaTemplate": "class MyStack { public MyStack() { } public void push(int x) { } public int pop() { return 0; } public int top() { return 0; } public boolean empty() { return false; } }",
+        "pythonTemplate": "from collections import deque\nclass MyStack: def __init__(self): pass def push(self, x: int) -> None: pass def pop(self) -> int: pass def top(self) -> int: pass def empty(self) -> bool: pass",
+        "cppTemplate": "class MyStack { public: MyStack() { } void push(int x) { } int pop() { return 0; } int top() { return 0; } bool empty() { return false; } };"
+      },
+      {
+        "id": 144,
+        "title": "Valid Palindrome",
+        "difficulty": "Easy",
+        "description": "Given a string `s`, return `true` if it is a palindrome, ignoring case-insensitive and non-alphanumeric characters. A stack can be used to store the first half of the string and compare it with the second half to determine if it's a palindrome.",
+        "examples": [
+          {
+            "input": "s = \"A man, a plan, a canal: Panama\"",
+            "output": "true"
+          },
+          {
+            "input": "s = \"race a car\"",
+            "output": "false"
+          }
+        ],
+        "constraints": [
+          "1 <= s.length <= 2 * 10^5"
+        ],
+        "testCases": [
+          { "input": { "s": "A man, a plan, a canal: Panama" }, "output": true },
+          { "input": { "s": "race a car" }, "output": false },
+          { "input": { "s": " " }, "output": true }
+        ],
+        "javaTemplate": "class Solution { public boolean isPalindrome(String s) { return false; } }",
+        "pythonTemplate": "class Solution: def isPalindrome(self, s: str) -> bool: pass",
+        "cppTemplate": "class Solution { public: bool isPalindrome(string s) { return false; } };"
+      },
+      {
+        "id": 145,
+        "title": "Reverse a Linked List",
+        "difficulty": "Easy",
+        "description": "Given the `head` of a singly linked list, reverse the list, and return the reversed list. A stack can be used to hold the nodes in reverse order and then re-construct the list.",
+        "examples": [
+          {
+            "input": "head = [1,2,3,4,5]",
+            "output": "[5,4,3,2,1]"
+          }
+        ],
+        "constraints": [
+          "The number of nodes in the list is in the range [0, 5000].",
+          "-5000 <= Node.val <= 5000"
+        ],
+        "testCases": [
+          { "input": { "head": [1,2,3,4,5] }, "output": [5,4,3,2,1] },
+          { "input": { "head": [1,2] }, "output": [2,1] },
+          { "input": { "head": [] }, "output": [] }
+        ],
+        "javaTemplate": "class Solution { public ListNode reverseList(ListNode head) { return null; } }",
+        "pythonTemplate": "class ListNode: def __init__(self, val=0, next=None): self.val = val; self.next = next\nclass Solution: def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]: pass",
+        "cppTemplate": "struct ListNode { int val; ListNode *next; ListNode() : val(0), next(nullptr) {} ListNode(int x) : val(x), next(nullptr) {} ListNode(int x, ListNode *next) : val(x), next(next) {} }; class Solution { public: ListNode* reverseList(ListNode* head) { return nullptr; } };"
+      },
+      {
+        "id": 146,
+        "title": "Next Greater Element I",
+        "difficulty": "Medium",
+        "description": "The next greater element of some element `x` in an array is the first greater element that is to the right of `x` in the same array. Given two distinct arrays `nums1` and `nums2`, find the next greater element for each element of `nums1` in `nums2`. All `nums1` elements are also in `nums2`.",
+        "examples": [
+          {
+            "input": "nums1 = [4,1,2], nums2 = [1,3,4,2]",
+            "output": "[-1,3,-1]"
+          }
+        ],
+        "constraints": [
+          "1 <= nums1.length, nums2.length <= 1000",
+          "0 <= nums1[i], nums2[i] <= 10^4"
+        ],
+        "testCases": [
+          { "input": { "nums1": [4,1,2], "nums2": [1,3,4,2] }, "output": [-1,3,-1] },
+          { "input": { "nums1": [2,4], "nums2": [1,2,3,4] }, "output": [3,-1] },
+          { "input": { "nums1": [1,3,5,2,4], "nums2": [6,5,4,3,2,1,7] }, "output": [7,7,7,7,7] }
+        ],
+        "javaTemplate": "class Solution { public int[] nextGreaterElement(int[] nums1, int[] nums2) { return new int[0]; } }",
+        "pythonTemplate": "class Solution: def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]: pass",
+        "cppTemplate": "class Solution { public: vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) { return {}; } };"
+      },
+      {
+        "id": 147,
+        "title": "Daily Temperatures",
+        "difficulty": "Medium",
+        "description": "Given an array of integers `temperatures` representing the daily temperatures, return an array `answer` such that `answer[i]` is the number of days you have to wait after the `i-th` day to get a warmer temperature. If there is no future day for which this is possible, keep `answer[i] == 0` instead.",
+        "examples": [
+          {
+            "input": "temperatures = [73,74,75,71,69,72,76,73]",
+            "output": "[1,1,4,2,1,1,0,0]"
+          }
+        ],
+        "constraints": [
+          "1 <= temperatures.length <= 10^5",
+          "30 <= temperatures[i] <= 100"
+        ],
+        "testCases": [
+          { "input": { "temperatures": [73,74,75,71,69,72,76,73] }, "output": [1,1,4,2,1,1,0,0] }
+        ],
+        "javaTemplate": "class Solution { public int[] dailyTemperatures(int[] temperatures) { return new int[0]; } }",
+        "pythonTemplate": "class Solution: def dailyTemperatures(self, temperatures: List[int]) -> List[int]: pass",
+        "cppTemplate": "class Solution { public: vector<int> dailyTemperatures(vector<int>& temperatures) { return {}; } };"
+      },
+      {
+        "id": 148,
+        "title": "Remove Duplicate Letters",
+        "difficulty": "Medium",
+        "description": "Given a string `s`, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.",
+        "examples": [
+          {
+            "input": "s = \"bcabc\"",
+            "output": "\"abc\""
+          }
+        ],
+        "constraints": [
+          "1 <= s.length <= 10^4",
+          "s consists of lowercase English letters."
+        ],
+        "testCases": [
+          { "input": { "s": "bcabc" }, "output": "abc" }
+        ],
+        "javaTemplate": "class Solution { public String removeDuplicateLetters(String s) { return \"\"; } }",
+        "pythonTemplate": "class Solution: def removeDuplicateLetters(self, s: str) -> str: pass",
+        "cppTemplate": "class Solution { public: string removeDuplicateLetters(string s) { return \"\"; } };"
+      },
+      {
+        "id": 149,
+        "title": "Simplify Path",
+        "difficulty": "Medium",
+        "description": "Given an absolute path for a Unix-style file system, which begins with a slash `'/'`. A simplified absolute path `path` looks like: `/some/dir`, and does not have any `.` or `..` and does not have multiple consecutive slashes. Return the simplified path.",
+        "examples": [
+          {
+            "input": "path = \"/home/\"",
+            "output": "\"/home\""
+          },
+          {
+            "input": "path = \"/a/./b/../../c/\"",
+            "output": "\"/c\""
+          }
+        ],
+        "constraints": [
+          "1 <= path.length <= 3000"
+        ],
+        "testCases": [
+          { "input": { "path": "/home/" }, "output": "/home" }
+        ],
+        "javaTemplate": "class Solution { public String simplifyPath(String path) { return \"\"; } }",
+        "pythonTemplate": "class Solution: def simplifyPath(self, path: str) -> str: pass",
+        "cppTemplate": "class Solution { public: string simplifyPath(string path) { return \"\"; } };"
+      },
+      {
+        "id": 150,
+        "title": "Evaluate Reverse Polish Notation",
+        "difficulty": "Medium",
+        "description": "You are given an array of strings `tokens` that represents an arithmetic expression in Reverse Polish Notation. Evaluate the expression. The operations are `+`, `-`, `*`, `/`. The operands may be integers or other expressions.",
+        "examples": [
+          {
+            "input": "tokens = [\"2\",\"1\",\"+\",\"3\",\"*\"]",
+            "output": "9"
+          }
+        ],
+        "constraints": [
+          "1 <= tokens.length <= 10^4"
+        ],
+        "testCases": [
+          { "input": { "tokens": ["2","1","+","3","*"] }, "output": 9 }
+        ],
+        "javaTemplate": "class Solution { public int evalRPN(String[] tokens) { return 0; } }",
+        "pythonTemplate": "class Solution: def evalRPN(self, tokens: List[str]) -> int: pass",
+        "cppTemplate": "class Solution { public: int evalRPN(vector<string>& tokens) { return 0; } };"
+      },
+      {
+        "id": 151,
+        "title": "Decode String",
+        "difficulty": "Medium",
+        "description": "Given an encoded string, return its decoded string. The encoding rule is: `k[encoded_string]`, where the `encoded_string` inside the square brackets is being repeated exactly `k` times. You may assume that the input string is always valid and there are no extra white spaces. `k` is a positive integer.",
+        "examples": [
+          {
+            "input": "s = \"3[a]2[bc]\"",
+            "output": "\"aaabcbc\""
+          }
+        ],
+        "constraints": [
+          "1 <= s.length <= 30"
+        ],
+        "testCases": [
+          { "input": { "s": "3[a]2[bc]" }, "output": "aaabcbc" }
+        ],
+        "javaTemplate": "class Solution { public String decodeString(String s) { return \"\"; } }",
+        "pythonTemplate": "class Solution: def decodeString(self, s: str) -> str: pass",
+        "cppTemplate": "class Solution { public: string decodeString(string s) { return \"\"; } };"
+      },
+      {
+        "id": 152,
+        "title": "Min Stack",
+        "difficulty": "Easy",
+        "description": "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.",
+        "examples": [
+          {
+            "input": "[\"MinStack\",\"push\",\"push\",\"push\",\"getMin\",\"pop\",\"top\",\"getMin\"]",
+            "output": "[null,null,null,null,-3,null,0,-2]"
+          }
+        ],
+        "constraints": [
+          "-2^{31} <= val <= 2^{31} - 1",
+          "pop, top and getMin operations will always be called on non-empty stacks."
+        ],
+        "testCases": [
+          { "input": ["MinStack","push","push","push","getMin","pop","top","getMin"], "output": [null, null, null, null, -3, null, 0, -2] }
+        ],
+        "javaTemplate": "class MinStack { public MinStack() { } public void push(int val) { } public void pop() { } public int top() { return 0; } public int getMin() { return 0; } }",
+        "pythonTemplate": "class MinStack: def __init__(self): pass def push(self, val: int) -> None: pass def pop(self) -> None: pass def top(self) -> int: pass def getMin(self) -> int: pass",
+        "cppTemplate": "class MinStack { public: MinStack() { } void push(int val) { } void pop() { } int top() { return 0; } int getMin() { return 0; } };"
+      },
+      {
+        "id": 153,
+        "title": "Trapping Rain Water",
+        "difficulty": "Hard",
+        "description": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+        "examples": [
+          {
+            "input": "height = [0,1,0,2,1,0,1,3,2,1,2,1]",
+            "output": "6"
+          }
+        ],
+        "constraints": [
+          "1 <= height.length <= 2 * 10^4",
+          "0 <= height[i] <= 10^5"
+        ],
+        "testCases": [
+          { "input": { "height": [0,1,0,2,1,0,1,3,2,1,2,1] }, "output": 6 }
+        ],
+        "javaTemplate": "class Solution { public int trap(int[] height) { return 0; } }",
+        "pythonTemplate": "class Solution: def trap(self, height: List[int]) -> int: pass",
+        "cppTemplate": "class Solution { public: int trap(vector<int>& height) { return 0; } };"
+      },
+      {
+        "id": 154,
+        "title": "Largest Rectangle in Histogram",
+        "difficulty": "Hard",
+        "description": "Given an array of integers `heights` representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.",
+        "examples": [
+          {
+            "input": "heights = [2,1,5,6,2,3]",
+            "output": "10"
+          }
+        ],
+        "constraints": [
+          "1 <= heights.length <= 10^5",
+          "0 <= heights[i] <= 10^4"
+        ],
+        "testCases": [
+          { "input": { "heights": [2,1,5,6,2,3] }, "output": 10 }
+        ],
+        "javaTemplate": "class Solution { public int largestRectangleArea(int[] heights) { return 0; } }",
+        "pythonTemplate": "class Solution: def largestRectangleArea(self, heights: List[int]) -> int: pass",
+        "cppTemplate": "class Solution { public: int largestRectangleArea(vector<int>& heights) { return 0; } };"
+      },
+      {
+        "id": 155,
+        "title": "Maximal Rectangle",
+        "difficulty": "Hard",
+        "description": "Given a `rows x cols` binary `matrix` filled with '0's and '1's, find the largest rectangle containing only '1's and return its area.",
+        "examples": [
+          {
+            "input": "matrix = [[\"1\",\"0\",\"1\",\"0\",\"0\"],[\"1\",\"0\",\"1\",\"1\",\"1\"],[\"1\",\"1\",\"1\",\"1\",\"1\"],[\"1\",\"0\",\"0\",\"1\",\"0\"]]",
+            "output": "6"
+          }
+        ],
+        "constraints": [
+          "1 <= rows, cols <= 200"
+        ],
+        "testCases": [
+          { "input": { "matrix": [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]] }, "output": 6 }
+        ],
+        "javaTemplate": "class Solution { public int maximalRectangle(char[][] matrix) { return 0; } }",
+        "pythonTemplate": "class Solution: def maximalRectangle(self, matrix: List[List[str]]) -> int: pass",
+        "cppTemplate": "class Solution { public: int maximalRectangle(vector<vector<char>>& matrix) { return 0; } };"
+      },
+      {
+        "id": 156,
+        "title": "Sum of Subarray Minimums",
+        "difficulty": "Hard",
+        "description": "Given an array of integers `arr`, find the sum of `min(b)` for every subarray `b` of `arr`. Since the answer may be large, return the answer modulo 10^9 + 7.",
+        "examples": [
+          {
+            "input": "arr = [3,1,2,4]",
+            "output": "17"
+          }
+        ],
+        "constraints": [
+          "1 <= arr.length <= 3 * 10^4"
+        ],
+        "testCases": [
+          { "input": { "arr": [3,1,2,4] }, "output": 17 }
+        ],
+        "javaTemplate": "class Solution { public int sumSubarrayMins(int[] arr) { return 0; } }",
+        "pythonTemplate": "class Solution: def sumSubarrayMins(self, arr: List[int]) -> int: pass",
+        "cppTemplate": "class Solution { public: int sumSubarrayMins(vector<int>& arr) { return 0; } };"
+      },
+      {
+        "id": 157,
+        "title": "Online Stock Span",
+        "difficulty": "Hard",
+        "description": "Design an algorithm that collects daily price quotes for some stock and returns the span of that stock's price for the current day. The span of the stock's price today is defined as the maximum number of consecutive days (starting from today and going backward) for which the price of the stock was less than or equal to today's price. The `StockSpanner` class: `StockSpanner()` initializes the object of the class. `int next(int price)` returns the span of the stock's price for the given `price` of the current day.",
+        "examples": [
+          {
+            "input": "[\"StockSpanner\", \"next\", \"next\", \"next\", \"next\", \"next\", \"next\", \"next\"]",
+            "output": "[null, 1, 1, 1, 2, 1, 4, 6]"
+          }
+        ],
+        "constraints": [
+          "Calls to `next` will be in a stream, with at most 10^4 calls in total.",
+          "1 <= price <= 10^5"
+        ],
+        "testCases": [
+          { "input": ["StockSpanner", "next", "next", "next", "next", "next", "next", "next"], "output": [null, 1, 1, 1, 2, 1, 4, 6] }
+        ],
+        "javaTemplate": "class StockSpanner { public StockSpanner() { } public int next(int price) { return 0; } }",
+        "pythonTemplate": "class StockSpanner: def __init__(self): pass def next(self, price: int) -> int: pass",
+        "cppTemplate": "class StockSpanner { public: StockSpanner() { } int next(int price) { return 0; } };"
+      },
+      {
+        "id": 158,
+        "title": "Remove K Digits",
+        "difficulty": "Hard",
+        "description": "Given string `num` representing a non-negative integer and an integer `k`, return the smallest possible integer after removing `k` digits from `num`.",
+        "examples": [
+          {
+            "input": "num = \"1432219\", k = 3",
+            "output": "\"1219\""
+          }
+        ],
+        "constraints": [
+          "1 <= num.length <= 10^5",
+          "1 <= k <= num.length"
+        ],
+        "testCases": [
+          { "input": { "num": "1432219", "k": 3 }, "output": "1219" }
+        ],
+        "javaTemplate": "class Solution { public String removeKdigits(String num, int k) { return \"\"; } }",
+        "pythonTemplate": "class Solution: def removeKdigits(self, num: str, k: int) -> str: pass",
+        "cppTemplate": "class Solution { public: string removeKdigits(string num, int k) { return \"\"; } };"
+      },
+      {
+        "id": 159,
+        "title": "Next Greater Element II",
+        "difficulty": "Hard",
+        "description": "Given a circular integer array `nums` (i.e., the next element of `nums[nums.length-1]` is `nums[0]`), return the next greater number for every element in `nums`. The next greater number of a number `x` is the first greater number to its traversing order next in the array, which means you could search circularly.",
+        "examples": [
+          {
+            "input": "nums = [1,2,1]",
+            "output": "[2,-1,2]"
+          }
+        ],
+        "constraints": [
+          "1 <= nums.length <= 10^4",
+          "-10^9 <= nums[i] <= 10^9"
+        ],
+        "testCases": [
+          { "input": { "nums": [1,2,1] }, "output": [2,-1,2] }
+        ],
+        "javaTemplate": "class Solution { public int[] nextGreaterElements(int[] nums) { return new int[0]; } }",
+        "pythonTemplate": "class Solution: def nextGreaterElements(self, nums: List[int]) -> List[int]: pass",
+        "cppTemplate": "class Solution { public: vector<int> nextGreaterElements(vector<int>& nums) { return {}; } };"
+      },
+      {
+        "id": 160,
+        "title": "Basic Calculator",
+        "difficulty": "Hard",
+        "description": "Given a string `s` representing a valid expression, return the result of the expression. The expression can contain parentheses `( )`, the addition `+` and subtraction `-` operators, integer numbers, and spaces ` `. The expression is always valid and is not a reverse polish notation.",
+        "examples": [
+          {
+            "input": "s = \"1 + 1\"",
+            "output": "2"
+          },
+          {
+            "input": "s = \" 2-1 + 2 \"",
+            "output": "3"
+          }
+        ],
+        "constraints": [
+          "1 <= s.length <= 3 * 10^5"
+        ],
+        "testCases": [
+          { "input": { "s": "1 + 1" }, "output": 2 }
+        ],
+        "javaTemplate": "class Solution { public int calculate(String s) { return 0; } }",
+        "pythonTemplate": "class Solution: def calculate(self, s: str) -> int: pass",
+        "cppTemplate": "class Solution { public: int calculate(string s) { return 0; } };"
+      }
+    ]
+  }
+  
