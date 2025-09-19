@@ -144,6 +144,5 @@ app/
 
 ---
 
-Do you want me to also **shrink this into a 3–4 line version for your resume** (like your other projects) so both README and resume versions are ready?
 
 
