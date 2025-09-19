@@ -53,6 +53,10 @@ export default function LandingPage() {
         </div>
         {/* animated subtle grid */}
         <div className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:linear-gradient(to_right,hsl(var(--foreground)/0.2)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.2)_1px,transparent_1px)] [background-size:40px_40px] animate-[pulse_12s_ease-in-out_infinite]" />
+        {/* rotating conic gradient ring */}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <div className="h-[90vmin] w-[90vmin] rounded-full opacity-15 blur-2xl [background:conic-gradient(from_0deg,transparent,transparent,transparent,hsl(var(--accent)/.25),transparent,transparent)] animate-[slow-rotate_40s_linear_infinite]" />
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
