@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { getDatabase } from './mongodb'
+import { getDatabase } from './dbConnect'
 import { User, UserSession } from './models/User'
 import { ObjectId } from 'mongodb'
 
@@ -33,11 +33,12 @@ export async function createUser(userData: {
   firstName: string
   lastName: string
 }): Promise<User> {
+  // Only connect to database when this function is called
   const db = await getDatabase()
   const users = db.collection<User>('users')
 
   // Check if user already exists
-  const existingUser = await users.findOne({ email: userData.email })
+  const existingUser = await users.findOne({ email: userData.email.toLowerCase() })
   if (existingUser) {
     throw new Error('User already exists')
   }
@@ -46,74 +47,24 @@ export async function createUser(userData: {
   const now = new Date()
 
   const user: User = {
-    email: userData.email,
+    email: userData.email.toLowerCase(),
     password: hashedPassword,
     firstName: userData.firstName,
     lastName: userData.lastName,
     createdAt: now,
     updatedAt: now,
-    
-    // Personal Information
+    lastProfileUpdate: now,
+    status: 'active',
+    role: 'user',
+    emailVerified: false,
+    isActive: true,
     profile: {
       displayName: `${userData.firstName} ${userData.lastName}`,
-      languages: ['English']
-    },
-    
-    // Professional Information
-    professional: {
-      experience: 'fresher',
       skills: [],
+      preferredLanguages: ['English'],
       education: [],
-      certifications: []
-    },
-    
-    // Social Links
-    socialLinks: {},
-    
-    // Preferences and Settings
-    preferences: {
-      theme: 'system',
-      fontSize: 'medium',
-      autoRun: false,
-      notifications: {
-        email: true,
-        push: true,
-        reminders: true,
-        achievements: true,
-        weeklyProgress: true
-      },
-      privacy: {
-        profileVisibility: 'public',
-        showEmail: false,
-        showPhone: false,
-        showLocation: true,
-        showExperience: true
-      },
-      coding: {
-        preferredLanguage: 'javascript',
-        editorTheme: 'vs-dark',
-        fontSize: 14,
-        tabSize: 2,
-        wordWrap: true,
-        minimap: true
-      }
-    },
-    
-    // Account Status and Verification
-    status: {
-      isVerified: false,
-      isActive: true,
-      isPremium: false,
-      lastProfileUpdate: now
-    },
-    
-    // Activity and Engagement
-    activity: {
-      loginStreak: 1,
-      lastActiveAt: now,
-      totalLoginDays: 1,
-      profileCompleteness: 25, // Basic info filled
-      achievements: []
+      experience: [],
+      projects: []
     }
   }
 
@@ -122,10 +73,10 @@ export async function createUser(userData: {
 }
 
 export async function authenticateUser(email: string, password: string): Promise<User | null> {
+  // Only connect to database when this function is called
   const db = await getDatabase()
-  const users = db.collection<User>('users')
+  const user = await db.collection<User>('users').findOne({ email: email.toLowerCase() })
 
-  const user = await users.findOne({ email })
   if (!user) {
     return null
   }
@@ -136,7 +87,7 @@ export async function authenticateUser(email: string, password: string): Promise
   }
 
   // Update last login
-  await users.updateOne(
+  await db.collection<User>('users').updateOne(
     { _id: user._id },
     { 
       $set: { 
@@ -146,25 +97,27 @@ export async function authenticateUser(email: string, password: string): Promise
     }
   )
 
-  return user
+  // Remove password before returning
+  const { password: _, ...userWithoutPassword } = user
+  return userWithoutPassword as User
 }
 
 export async function getUserById(userId: string): Promise<User | null> {
+  // Only connect to database when this function is called
   const db = await getDatabase()
-  const users = db.collection<User>('users')
-  
-  return users.findOne({ _id: new ObjectId(userId) })
+  return db.collection<User>('users').findOne({ _id: new ObjectId(userId) })
 }
 
 export async function createSession(userId: string, ipAddress?: string, userAgent?: string): Promise<string> {
+  // Only connect to database when this function is called
   const db = await getDatabase()
-  const sessions = db.collection<UserSession>('userSessions')
-
+  const sessions = db.collection<UserSession>('sessions')
+  
   const sessionToken = generateToken(userId)
   const now = new Date()
   const expiresAt = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000) // 7 days
 
-  const session: UserSession = {
+  await sessions.insertOne({
     userId: new ObjectId(userId),
     sessionToken,
     expiresAt,
@@ -172,16 +125,17 @@ export async function createSession(userId: string, ipAddress?: string, userAgen
     lastAccessedAt: now,
     ipAddress,
     userAgent
-  }
+  })
 
-  await sessions.insertOne(session)
   return sessionToken
 }
 
 export async function validateSession(sessionToken: string): Promise<User | null> {
+  // Only connect to database when this function is called
   const db = await getDatabase()
-  const sessions = db.collection<UserSession>('userSessions')
-
+  const sessions = db.collection<UserSession>('sessions')
+  const users = db.collection<User>('users')
+  
   const session = await sessions.findOne({
     sessionToken,
     expiresAt: { $gt: new Date() }
@@ -191,18 +145,17 @@ export async function validateSession(sessionToken: string): Promise<User | null
     return null
   }
 
-  // Update last accessed
+  // Update last accessed time
   await sessions.updateOne(
     { _id: session._id },
     { $set: { lastAccessedAt: new Date() } }
   )
 
-  return getUserById(session.userId.toString())
+  return users.findOne({ _id: session.userId })
 }
 
 export async function deleteSession(sessionToken: string): Promise<void> {
+  // Only connect to database when this function is called
   const db = await getDatabase()
-  const sessions = db.collection<UserSession>('userSessions')
-  
-  await sessions.deleteOne({ sessionToken })
+  await db.collection<UserSession>('sessions').deleteOne({ sessionToken })
 }
