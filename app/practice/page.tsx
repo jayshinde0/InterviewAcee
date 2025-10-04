@@ -9,13 +9,38 @@ import { Clock, Star, Target, CheckCircle, Search } from "lucide-react"
 import Link from "next/link"
 import { DashboardLayout } from "@/components/dashboard-layout"
 import { getCategories, getCategoryStats, getOverallStats } from "@/lib/problems"
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
+import { useAuth } from "@/contexts/auth-context"
+import { useProgress } from "@/hooks/use-progress"
 
 export default function PracticeOverviewPage() {
+  const { user } = useAuth()
+  const { stats: progressStats, loading } = useProgress()
   const categories = getCategories()
   const categoryStats = getCategoryStats()
   const overallStats = getOverallStats()
   const [searchQuery, setSearchQuery] = useState("")
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  
+  // Default stats to prevent hydration mismatch
+  const defaultStats = {
+    solved: 0,
+    total: 15,
+    inProgress: 0,
+    completionRate: 0
+  }
+  
+  // Use MongoDB stats if available and mounted, otherwise use default stats
+  const displayStats = mounted && progressStats ? {
+    solved: progressStats.coding_problems_solved || 0,
+    total: 15, // Total problems available
+    inProgress: (progressStats.coding_problems_attempted || 0) - (progressStats.coding_problems_solved || 0),
+    completionRate: Math.round(((progressStats.coding_problems_solved || 0) / 15) * 100)
+  } : defaultStats
 
   const filteredCategories = useMemo(() => {
     if (!searchQuery.trim()) return categoryStats
@@ -54,9 +79,11 @@ export default function PracticeOverviewPage() {
               <CheckCircle className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{overallStats.solved} / {overallStats.total}</div>
+              <div className="text-2xl font-bold" suppressHydrationWarning>
+                {displayStats.solved} / {displayStats.total}
+              </div>
               <p className="text-xs text-muted-foreground">Great pace! Keep going.</p>
-              <Progress value={overallStats.completionRate} className="mt-2" />
+              <Progress value={displayStats.completionRate} className="mt-2" />
             </CardContent>
           </Card>
           <Card>
@@ -65,7 +92,9 @@ export default function PracticeOverviewPage() {
               <Clock className="h-4 w-4 text-blue-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{overallStats.inProgress}</div>
+              <div className="text-2xl font-bold" suppressHydrationWarning>
+                {displayStats.inProgress}
+              </div>
               <p className="text-xs text-muted-foreground">Problems being worked on</p>
             </CardContent>
           </Card>
@@ -75,7 +104,9 @@ export default function PracticeOverviewPage() {
               <Target className="h-4 w-4 text-purple-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{overallStats.completionRate}%</div>
+              <div className="text-2xl font-bold" suppressHydrationWarning>
+                {displayStats.completionRate}%
+              </div>
               <p className="text-xs text-muted-foreground">Overall progress</p>
             </CardContent>
           </Card>
@@ -85,7 +116,9 @@ export default function PracticeOverviewPage() {
               <Star className="h-4 w-4 text-yellow-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{overallStats.total}</div>
+              <div className="text-2xl font-bold" suppressHydrationWarning>
+                {displayStats.total}
+              </div>
               <p className="text-xs text-muted-foreground">Available to solve</p>
             </CardContent>
           </Card>

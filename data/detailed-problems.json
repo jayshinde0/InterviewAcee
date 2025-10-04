@@ -66,35 +66,6 @@
           },
           {
             "id": 3,
-            "title": "Best Time to Buy and Sell Stock",
-            "difficulty": "Easy",
-            "description": "You are given an array `prices` where `prices[i]` is the price of a given stock on the `i`^th day. You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock. Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.",
-            "examples": [
-              {
-                "input": "prices = [7,1,5,3,6,4]",
-                "output": "5",
-                "explanation": "Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5. Note that buying on day 2 and selling on day 1 is not allowed because you must sell after you buy."
-              },
-              {
-                "input": "prices = [7,6,4,3,1]",
-                "output": "0",
-                "explanation": "In this case, no transactions are done and the max profit is 0."
-              }
-            ],
-            "constraints": [
-              "1 <= prices.length <= 10^5",
-              "0 <= prices[i] <= 10^4"
-            ],
-            "testCases": [
-              { "input": { "prices": [7,1,5,3,6,4] }, "output": 5 },
-              { "input": { "prices": [7,6,4,3,1] }, "output": 0 }
-            ],
-            "javaTemplate": "class Solution { public int maxProfit(int[] prices) { return 0; } }",
-            "pythonTemplate": "class Solution: def maxProfit(self, prices: List[int]) -> int: pass",
-            "cppTemplate": "class Solution { public: int maxProfit(vector<int>& prices) { return 0; } };"
-          },
-          {
-            "id": 4,
             "title": "Contains Duplicate",
             "difficulty": "Easy",
             "description": "Given an integer array `nums`, return `true` if any value appears at least twice in the array, and return `false` if every element is distinct.",
@@ -121,7 +92,7 @@
             "cppTemplate": "class Solution { public: bool containsDuplicate(vector<int>& nums) { return false; } };"
           },
           {
-            "id": 5,
+            "id": 4,
             "title": "Move Zeroes",
             "difficulty": "Easy",
             "description": "Given an integer array `nums`, move all `0`'s to the end of it while maintaining the relative order of the non-zero elements. Note that you must do this in-place without making a copy of the array.",
@@ -146,6 +117,33 @@
             "javaTemplate": "class Solution { public void moveZeroes(int[] nums) {} }",
             "pythonTemplate": "class Solution: def moveZeroes(self, nums: List[int]) -> None: pass",
             "cppTemplate": "class Solution { public: void moveZeroes(vector<int>& nums) {} };"
+          },
+          {
+            "id": 5,
+            "title": "Intersection of Two Arrays II",
+            "difficulty": "Easy",
+            "description": "Given two integer arrays `nums1` and `nums2`, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.",
+            "examples": [
+              {
+                "input": "nums1 = [1,2,2,1], nums2 = [2,2]",
+                "output": "[2,2]"
+              },
+              {
+                "input": "nums1 = [4,9,5], nums2 = [9,4,9,8,4]",
+                "output": "[4,9]"
+              }
+            ],
+            "constraints": [
+              "1 <= nums1.length, nums2.length <= 1000",
+              "0 <= nums1[i], nums2[i] <= 1000"
+            ],
+            "testCases": [
+              { "input": { "nums1": [1,2,2,1], "nums2": [2,2] }, "output": [2,2] },
+              { "input": { "nums1": [4,9,5], "nums2": [9,4,9,8,4] }, "output": [4,9] }
+            ],
+            "javaTemplate": "class Solution { public int[] intersect(int[] nums1, int[] nums2) { return null; } }",
+            "pythonTemplate": "class Solution: def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]: pass",
+            "cppTemplate": "class Solution { public: vector<int> intersect(vector<int>& nums1, vector<int>& nums2) { return {}; } };"
           }
         ]
       },

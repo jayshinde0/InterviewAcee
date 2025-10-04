@@ -1,42 +1,19 @@
 /** @type {import('next').NextConfig} */
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
+  experimental: {
+    serverComponentsExternalPackages: ['mongodb']
   },
-  typescript: {
-    ignoreBuildErrors: true,
+  env: {
+    MONGODB_URI: process.env.MONGODB_URI,
+    JWT_SECRET: process.env.JWT_SECRET,
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY,
+    JUDGE0_API_URL: process.env.JUDGE0_API_URL,
+    JUDGE0_API_KEY: process.env.JUDGE0_API_KEY,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
   images: {
-    unoptimized: true,
-  },
-  serverExternalPackages: ['mongoose', 'mongodb', '@mongodb-js/zstd', 'kerberos', 'snappy', 'aws4', 'mongodb-client-encryption', 'bson', 'http-proxy-agent', 'https-proxy-agent'],
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-        dns: false,
-        child_process: false,
-        dgram: false,
-        zlib: false,
-        http2: false,
-        http: false,
-        https: false,
-        stream: path.resolve(__dirname, 'node_modules/stream-browserify'),
-        crypto: path.resolve(__dirname, 'node_modules/crypto-browserify'),
-        path: path.resolve(__dirname, 'node_modules/path-browserify'),
-        os: path.resolve(__dirname, 'node_modules/os-browserify/browser'),
-      };
-    }
-    return config;
+    domains: ['localhost'],
   },
 }
 

@@ -66,12 +66,12 @@ export async function submitAptitudeTest(submission: TestSubmission) {
 
 export async function getAptitudeTestProgress(category?: string) {
   try {
-    const url = category 
+    const url = category
       ? `/api/aptitude/test-progress?category=${encodeURIComponent(category)}`
       : '/api/aptitude/test-progress'
-    
+
     const response = await fetch(url)
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch test progress')
     }

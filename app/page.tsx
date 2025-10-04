@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Code, Users, BarChart3, Brain, Clock, Target } from "lucide-react"
 import Link from "next/link"
 import { Footer } from "@/components/footer"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function LandingPage() {
   return (
@@ -33,6 +34,7 @@ export default function LandingPage() {
               </Link>
             </div>
             <div className="flex items-center space-x-4">
+              <ThemeToggle />
               <Button variant="ghost" asChild>
                 <Link href="/login">Sign In</Link>
               </Button>

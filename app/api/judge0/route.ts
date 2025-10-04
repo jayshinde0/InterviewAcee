@@ -6,8 +6,9 @@ import path from 'path'
 
 const execAsync = promisify(exec)
 
-// Local Judge0 Configuration (fallback to local execution if Judge0 unavailable)
-const JUDGE0_URL = 'http://localhost:2358'
+// Judge0 Configuration - Use RapidAPI Judge0 service
+const JUDGE0_URL = process.env.JUDGE0_API_URL || 'https://judge0-ce.p.rapidapi.com'
+const JUDGE0_API_KEY = process.env.JUDGE0_API_KEY
 
 // Language IDs for Judge0
 const LANGUAGE_IDS = {
@@ -219,12 +220,20 @@ if __name__ == "__main__":
 `
       }
 
-      // Create submission using local Judge0
+      // Create submission using Judge0 API
+      const headers: any = {
+        'Content-Type': 'application/json'
+      }
+      
+      // Add RapidAPI headers if using RapidAPI
+      if (JUDGE0_URL.includes('rapidapi.com') && JUDGE0_API_KEY) {
+        headers['X-RapidAPI-Key'] = JUDGE0_API_KEY
+        headers['X-RapidAPI-Host'] = 'judge0-ce.p.rapidapi.com'
+      }
+      
       const submissionResponse = await fetch(`${JUDGE0_URL}/submissions?base64_encoded=false&wait=false`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers,
         body: JSON.stringify({
           source_code: fullCode,
           language_id: languageId,
@@ -258,10 +267,18 @@ if __name__ == "__main__":
         await new Promise(resolve => setTimeout(resolve, 1000)) // Wait 1 second
         
         try {
+          const resultHeaders: any = {
+            'Content-Type': 'application/json'
+          }
+          
+          // Add RapidAPI headers if using RapidAPI
+          if (JUDGE0_URL.includes('rapidapi.com') && JUDGE0_API_KEY) {
+            resultHeaders['X-RapidAPI-Key'] = JUDGE0_API_KEY
+            resultHeaders['X-RapidAPI-Host'] = 'judge0-ce.p.rapidapi.com'
+          }
+          
           const resultResponse = await fetch(`${JUDGE0_URL}/submissions/${token}?base64_encoded=false&fields=*`, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
+            headers: resultHeaders
           })
           
           if (!resultResponse.ok) {

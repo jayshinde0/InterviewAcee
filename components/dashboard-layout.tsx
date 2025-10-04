@@ -27,6 +27,7 @@ import {
   Calculator,
   Terminal,
 } from "lucide-react"
+import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useAuth } from "@/contexts/auth-context"
@@ -59,13 +60,14 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const SidebarContent = () => (
     <div className="flex h-full flex-col">
       {/* Logo */}
-      <div className="flex h-16 items-center border-b border-border px-6">
+      <div className="flex h-16 items-center justify-between border-b border-border px-6">
         <Link href="/" className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
             <Brain className="w-5 h-5 text-accent-foreground" />
           </div>
           <span className="text-xl font-bold text-foreground">InterviewAce</span>
         </Link>
+        <ThemeToggle />
       </div>
 
       {/* Navigation */}
@@ -97,7 +99,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="w-full justify-start space-x-3 px-3">
               <Avatar className="w-8 h-8">
-                <AvatarImage src={user?.profilePhoto || "/placeholder.svg"} />
+                <AvatarImage src="/placeholder.svg" />
                 <AvatarFallback>
                   {user?.firstName?.[0]}
                   {user?.lastName?.[0]}
@@ -154,20 +156,23 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       {/* Main Content */}
       <div className="flex flex-1 flex-col overflow-hidden">
         {/* Mobile Header */}
-        <div className="flex h-16 items-center border-b border-border bg-background px-4 lg:hidden">
-          <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="w-6 h-6" />
-              </Button>
-            </SheetTrigger>
-          </Sheet>
-          <Link href="/" className="ml-4 flex items-center space-x-2">
-            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-              <Brain className="w-5 h-5 text-accent-foreground" />
-            </div>
-            <span className="text-xl font-bold text-foreground">InterviewAce</span>
-          </Link>
+        <div className="flex h-16 items-center justify-between border-b border-border bg-background px-4 lg:hidden">
+          <div className="flex items-center">
+            <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="w-6 h-6" />
+                </Button>
+              </SheetTrigger>
+            </Sheet>
+            <Link href="/" className="ml-4 flex items-center space-x-2">
+              <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                <Brain className="w-5 h-5 text-accent-foreground" />
+              </div>
+              <span className="text-xl font-bold text-foreground">InterviewAce</span>
+            </Link>
+          </div>
+          <ThemeToggle />
         </div>
 
         {/* Page Content */}

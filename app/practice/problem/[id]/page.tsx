@@ -14,6 +14,7 @@ import { runTestCases, TestResult } from "@/lib/test-runner"
 import Link from "next/link"
 import { CodeEditor } from "@/components/code-editor"
 import { useAuth } from "@/contexts/auth-context"
+import { useProgress } from "@/hooks/use-progress"
 
 export default function ProblemDetailPage() {
   const params = useParams<{ id: string }>()
@@ -27,27 +28,30 @@ export default function ProblemDetailPage() {
   const [isMounted, setIsMounted] = useState(false)
   const [submissionResult, setSubmissionResult] = useState<any>(null)
   const { user } = useAuth()
+  const { submitCode, refreshStats } = useProgress()
 
-  // Function to save progress to MongoDB
-  const saveProgressToDatabase = async (problemId: number, status: 'Solved' | 'In-progress') => {
-    if (!user?.email) return
+  // Function to save progress to MongoDB using the progress service
+  const saveProgressToDatabase = async (problemId: string, status: 'accepted' | 'wrong_answer' | 'runtime_error', testResults: TestResult[]) => {
+    if (!user?.id) return
     
     try {
-      const response = await fetch('/api/progress', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          problemId,
-          status,
-          timestamp: new Date().toISOString()
-        }),
+      const passedTests = testResults.filter(r => r.passed).length
+      const totalTests = testResults.length
+      
+      await submitCode({
+        problemId: problemId,
+        programmingLanguage: language,
+        sourceCode: code,
+        status: status,
+        executionTimeMs: Math.floor(Math.random() * 100) + 50, // Mock execution time
+        memoryUsedKb: Math.floor(Math.random() * 1000) + 500, // Mock memory usage
+        testCasesPassed: passedTests,
+        totalTestCases: totalTests,
+        errorMessage: status !== 'accepted' ? 'Some test cases failed' : undefined
       })
       
-      if (!response.ok) {
-        console.error('Failed to save progress to database')
-      }
+      // Refresh dashboard stats
+      await refreshStats()
     } catch (error) {
       console.error('Error saving progress:', error)
     }
@@ -55,26 +59,84 @@ export default function ProblemDetailPage() {
 
   useEffect(() => {
     setIsMounted(true)
-    const problemData = getProblemById(id)
-    if (problemData) {
-      setProblem(problemData)
-      // Set default code template based on language
-      setCode(getDefaultTemplate(problemData, language))
-      setUserProgress(getUserProgress())
+    fetchProblemFromMongoDB()
+    setUserProgress(getUserProgress())
+  }, [id])
+
+  useEffect(() => {
+    if (problem) {
+      setCode(getDefaultTemplate(problem, language))
     }
-  }, [id, language])
+  }, [problem, language])
+
+  const fetchProblemFromMongoDB = async () => {
+    try {
+      const response = await fetch(`/api/problems/${id}`)
+      if (response.ok) {
+        const data = await response.json()
+        setProblem(data.problem)
+      } else {
+        // Fallback to local data if MongoDB fetch fails
+        const problemData = getProblemById(id)
+        if (problemData) {
+          setProblem(problemData)
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching problem from MongoDB:', error)
+      // Fallback to local data
+      const problemData = getProblemById(id)
+      if (problemData) {
+        setProblem(problemData)
+      }
+    }
+  }
 
   const getDefaultTemplate = (problem: Problem, lang: string): string => {
-    // Only support C++ for now
-    if (problem.title === "Two Sum") {
-      return `class Solution {
+    // C++ templates for specific problems
+    switch (problem.title) {
+      case "Two Sum":
+        return `class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         
     }
 };`
-    } else {
-      return `class Solution {
+      
+      case "Remove Duplicates from Sorted Array":
+        return `class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        
+    }
+};`
+      
+      case "Best Time to Buy and Sell Stock II":
+        return `class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        
+    }
+};`
+      
+      case "Contains Duplicate":
+        return `class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        
+    }
+};`
+      
+      case "Move Zeroes":
+        return `class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        
+    }
+};`
+      
+      default:
+        return `class Solution {
 public:
     void solve() {
         
@@ -143,8 +205,8 @@ public:
         if (!userProgress[problem.id]) {
           updateUserProgress(problem.id, "In-progress")
           setUserProgress(getUserProgress())
-          // Save to database
-          await saveProgressToDatabase(problem.id, 'In-progress')
+          // Save to database as attempted (not solved yet)
+          await saveProgressToDatabase(problem.id.toString(), 'wrong_answer', results)
         }
       } else {
         setTestResults([{
@@ -187,8 +249,9 @@ public:
         if (allPassed) {
           updateUserProgress(problem.id, "Solved")
           setUserProgress(getUserProgress())
-          // Save to database as solved
-          await saveProgressToDatabase(problem.id, 'Solved')
+          
+          // Save to database as solved (accepted)
+          await saveProgressToDatabase(problem.id.toString(), 'accepted', results)
           
           // Show LeetCode-style success message
           setSubmissionResult({
@@ -199,6 +262,9 @@ public:
             timestamp: new Date().toLocaleString()
           })
         } else {
+          // Save to database as wrong answer
+          await saveProgressToDatabase(problem.id.toString(), 'wrong_answer', results)
+          
           setSubmissionResult({
             status: 'Wrong Answer',
             failedCase: results.findIndex((r: any) => !r.passed) + 1,
@@ -216,6 +282,12 @@ public:
       }
     } catch (error) {
       console.error("Submission error:", error)
+      
+      // Save to database as runtime error
+      if (problem) {
+        await saveProgressToDatabase(problem.id.toString(), 'runtime_error', [])
+      }
+      
       setSubmissionResult({
         status: 'Runtime Error',
         error: error instanceof Error ? error.message : 'Unknown error',

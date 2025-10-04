@@ -3091,7 +3091,7 @@ export default function CategoryTestPage() {
                         className={`group p-4 border-2 rounded-lg cursor-pointer transition-all duration-200 ${
                           selectedAnswers[currentQuestion] === index
                             ? "border-green-500 bg-green-50 dark:bg-green-900/20 shadow-md"
-                            : "border-gray-200 dark:border-gray-600 hover:border-green-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                            : "border-gray-200 dark:border-gray-600 hover:border-green-300 hover:bg-gray-50 dark:hover:bg-gray-700 bg-white dark:bg-gray-800"
                         }`}
                         onClick={() => handleAnswerSelect(index)}
                       >
@@ -3099,7 +3099,7 @@ export default function CategoryTestPage() {
                           <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                             selectedAnswers[currentQuestion] === index
                               ? "border-green-500 bg-green-500"
-                              : "border-gray-300 group-hover:border-green-300"
+                              : "border-gray-300 dark:border-gray-500 group-hover:border-green-300"
                           }`}>
                             {selectedAnswers[currentQuestion] === index && (
                               <div className="w-2.5 h-2.5 rounded-full bg-white"></div>
@@ -3109,11 +3109,11 @@ export default function CategoryTestPage() {
                             <span className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold ${
                               selectedAnswers[currentQuestion] === index
                                 ? "bg-green-500 text-white"
-                                : "bg-gray-100 text-gray-600 group-hover:bg-green-100"
+                                : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 group-hover:bg-green-100 dark:group-hover:bg-green-800"
                             }`}>
                               {String.fromCharCode(65 + index)}
                             </span>
-                            <span className="text-base font-medium text-gray-800 dark:text-gray-200">
+                            <span className="text-base font-medium text-gray-900 dark:text-gray-100">
                               {option}
                             </span>
                           </div>

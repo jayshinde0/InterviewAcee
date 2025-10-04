@@ -12,6 +12,7 @@ import { Brain, Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/contexts/auth-context"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -75,14 +76,15 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="flex items-center justify-center mb-8">
-          <div className="flex items-center space-x-2">
+        {/* Logo and Theme Toggle */}
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center space-x-2 mx-auto">
             <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
               <Brain className="w-6 h-6 text-accent-foreground" />
             </div>
             <span className="text-2xl font-bold text-foreground">InterviewAce</span>
           </div>
+          <ThemeToggle />
         </div>
 
         <Card className="border-border shadow-lg">

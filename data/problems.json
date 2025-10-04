@@ -30,6 +30,13 @@
   },
   {
     "id": 5,
+    "title": "Move Zeroes",
+    "category": "Array",
+    "difficulty": "Easy",
+    "status": "unsolved"
+  },
+  {
+    "id": 5,
     "title": "Intersection of Two Arrays II",
     "category": "Array",
     "difficulty": "Easy",

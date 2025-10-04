@@ -368,7 +368,7 @@ export async function runTestCases(problem: Problem, code: string, language: str
       caseNumber: 1,
       passed: false,
       expected: 'No test cases available',
-      actual: 'No test cases to run',
+      actual: 'No test cases available',
       input: {}
     }]
   }

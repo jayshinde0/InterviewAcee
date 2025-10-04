@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html 
       lang="en" 
-      className={`${workSans.variable} ${openSans.variable} antialiased`} 
+      className={`dark ${workSans.variable} ${openSans.variable} antialiased`} 
       suppressHydrationWarning
     >
       <body className="font-sans" suppressHydrationWarning>
