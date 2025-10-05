@@ -1,7 +1,3 @@
-Perfect 👍
-I’ll prepare a **professional README.md** for your *InterviewAce* project, based on the overview you shared. This will look good on GitHub and also serve as a polished project description.
-
----
 
 # 📘 InterviewAce – Intelligent Interview Preparation Platform
 
@@ -143,6 +139,7 @@ app/
 👉 [InterviewAce](https://github.com/your-username/InterviewAce)
 
 ---
+
 
 
 
