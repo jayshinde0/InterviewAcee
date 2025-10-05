@@ -76,7 +76,8 @@ export function getCategories(): Category[] {
   const categoryMap = new Map<string, Problem[]>()
   
   // Group problems by category from problemsData
-  (problemsData as any[]).forEach((problem: any) => {
+  const problems = problemsData as any[]
+  problems.forEach((problem: any) => {
     let categoryName = problem.category
     // Map "Trees" to "Tree" to avoid duplication
     if (categoryName === "Trees") {
@@ -87,15 +88,22 @@ export function getCategories(): Category[] {
     if (!categoryMap.has(categoryName)) {
       categoryMap.set(categoryName, [])
     }
-    categoryMap.get(categoryName)!.push(typedProblem)
+    const categoryProblems = categoryMap.get(categoryName)
+    if (categoryProblems) {
+      categoryProblems.push(typedProblem)
+    }
   })
   
   // Convert to Category objects
-  return Array.from(categoryMap.entries()).map(([name, problems]: [string, Problem[]]) => ({
-    id: toSlug(name),
-    name,
-    problems
-  }))
+  const categories: Category[] = []
+  categoryMap.forEach((problems, name) => {
+    categories.push({
+      id: toSlug(name),
+      name,
+      problems
+    })
+  })
+  return categories
 }
 
 // Get all problems across all categories
@@ -188,7 +196,8 @@ export function getProblemsByCategory(categoryId: string): Problem[] {
   
   // Special handling for Array category - use separate array.json file
   if (categoryName.toLowerCase() === "array") {
-    return (arrayProblemsData as any[]).map((problem: any) => castProblem({
+    const arrayData = arrayProblemsData as any
+    return arrayData.problems.map((problem: any) => castProblem({
       ...problem,
       category: "Array",
       status: "unsolved"
@@ -210,7 +219,8 @@ export function getProblemById(id: number): Problem | undefined {
   }
   
   // Check array problems
-  const arrayProblem = (arrayProblemsData as any[]).find((p: any) => p.id === id)
+  const arrayData = arrayProblemsData as any
+  const arrayProblem = arrayData.problems.find((p: any) => p.id === id)
   if (arrayProblem) {
     return castProblem({
       ...arrayProblem,

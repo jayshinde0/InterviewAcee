@@ -49,7 +49,7 @@ export default function CategoryPage() {
     if (user?._id || user?.email) {
       fetchMongoProgress()
     }
-  }, [categoryId, user?.id])
+  }, [categoryId, user?._id])
 
   const fetchProblemsFromMongoDB = async () => {
     try {

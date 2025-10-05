@@ -32,7 +32,7 @@ export default function ProblemDetailPage() {
 
   // Function to save progress to MongoDB using the progress service
   const saveProgressToDatabase = async (problemId: string, status: 'accepted' | 'wrong_answer' | 'runtime_error', testResults: TestResult[]) => {
-    if (!user?.id) return
+    if (!user?._id) return
     
     try {
       const passedTests = testResults.filter(r => r.passed).length

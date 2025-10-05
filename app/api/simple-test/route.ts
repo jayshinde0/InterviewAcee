@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
       status: 'Accepted',
       stdout: '',
       stderr: '',
-      testResults: []
+      testResults: [] as Array<{ passed: boolean; input: string; expected: string; actual: string }>
     }
     
     // Simple validation for Two Sum problem

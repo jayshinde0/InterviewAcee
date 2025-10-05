@@ -1,14 +1,29 @@
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   serverExternalPackages: ['mongodb'],
-  experimental: {
-    esmExternals: 'loose'
-  },
-  webpack: (config) => {
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Ensure alias resolution works properly
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': '.'
+      '@/components': path.resolve(__dirname, 'components'),
+      '@/lib': path.resolve(__dirname, 'lib'),
+      '@/app': path.resolve(__dirname, 'app'),
+      '@/hooks': path.resolve(__dirname, 'hooks'),
+      '@': path.resolve(__dirname),
     }
+    
+    // Ensure proper module resolution
+    config.resolve.modules = [
+      path.resolve(__dirname),
+      'node_modules'
+    ]
+    
     return config
   },
   env: {

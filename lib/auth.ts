@@ -58,6 +58,8 @@ export async function createUser(userData: {
     role: 'user',
     emailVerified: false,
     isActive: true,
+    profileCompleteness: 25, // Basic profile created
+    achievements: [], // No achievements initially
     profile: {
       displayName: `${userData.firstName} ${userData.lastName}`,
       skills: [],
