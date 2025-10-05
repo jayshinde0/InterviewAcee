@@ -59,7 +59,7 @@ export default function CategoryPage() {
       if (response.ok) {
         const data = await response.json()
         console.log('MongoDB problems fetched:', data.problems?.length || 0)
-        if (data.problems && data.problems.length > 0) {
+        if (data.problems && Array.isArray(data.problems) && data.problems.length > 0) {
           setProblems(data.problems)
           return
         }
@@ -76,7 +76,7 @@ export default function CategoryPage() {
       // Fallback to local data
       const categoryProblems = getProblemsByCategory(categoryId)
       console.log('Fallback: Local problems found:', categoryProblems.length)
-      setProblems(categoryProblems)
+      setProblems(Array.isArray(categoryProblems) ? categoryProblems : [])
     }
   }
 
@@ -111,6 +111,11 @@ export default function CategoryPage() {
 
   // Filter problems based on difficulty and search query
   useEffect(() => {
+    if (!Array.isArray(problems)) {
+      setFilteredProblems([])
+      return
+    }
+    
     let filtered = filterProblemsByDifficulty(problems, difficultyFilter)
     
     if (searchQuery.trim()) {
@@ -119,7 +124,7 @@ export default function CategoryPage() {
       )
     }
     
-    setFilteredProblems(filtered)
+    setFilteredProblems(Array.isArray(filtered) ? filtered : [])
   }, [problems, difficultyFilter, searchQuery])
 
   const getProblemStatus = (problemId: number) => {
@@ -262,9 +267,9 @@ export default function CategoryPage() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle>{filteredProblems[0]?.category || problems[0]?.category || "Problems"}</CardTitle>
+                <CardTitle>{(filteredProblems && filteredProblems[0]?.category) || (problems && problems[0]?.category) || "Problems"}</CardTitle>
                 <CardDescription>
-                  {filteredProblems.length} of {problems.length} problems
+                  {(filteredProblems?.length || 0)} of {(problems?.length || 0)} problems
                   {searchQuery && ` matching "${searchQuery}"`}
                 </CardDescription>
               </div>
@@ -310,14 +315,14 @@ export default function CategoryPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredProblems.length === 0 ? (
+                  {!filteredProblems || filteredProblems.length === 0 ? (
                     <tr>
                       <td colSpan={4} className="px-2 py-8 text-center text-muted-foreground">
                         {searchQuery ? `No problems found matching "${searchQuery}"` : "No problems found"}
                       </td>
                     </tr>
                   ) : (
-                    filteredProblems.map((problem) => {
+                    Array.isArray(filteredProblems) && filteredProblems.map((problem) => {
                       const status = getProblemStatus(problem.id)
                       return (
                         <tr key={problem.id} className="border-t hover:bg-muted/50">
