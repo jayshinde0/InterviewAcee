@@ -1,7 +1,6 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Input } from "@/components/ui/input"
@@ -9,13 +8,31 @@ import { Clock, Star, Target, CheckCircle, Search } from "lucide-react"
 import Link from "next/link"
 import { DashboardLayout } from "@/components/dashboard-layout"
 import { getCategories, getCategoryStats, getOverallStats } from "@/lib/problems"
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 
 export default function PracticeOverviewPage() {
   const categories = getCategories()
   const categoryStats = getCategoryStats()
   const overallStats = getOverallStats()
   const [searchQuery, setSearchQuery] = useState("")
+  const [companies, setCompanies] = useState<string[]>([]) // store company list
+  const [loading, setLoading] = useState(true)
+
+  // Fetch companies from API
+  useEffect(() => {
+    async function fetchCompanies() {
+      try {
+        const res = await fetch("/api/prepleet/companies");
+        const data = await res.json()
+        setCompanies(data)
+      } catch (err) {
+        console.error("Error fetching companies:", err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchCompanies()
+  }, [])
 
   const filteredCategories = useMemo(() => {
     if (!searchQuery.trim()) return categoryStats
@@ -91,7 +108,6 @@ export default function PracticeOverviewPage() {
           </Card>
         </div>
 
-
         {/* Search Section */}
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -142,6 +158,35 @@ export default function PracticeOverviewPage() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Companies Section */}
+<Card>
+  <CardHeader>
+    <CardTitle>Companies</CardTitle>
+    <CardDescription>Filter problems by company tags</CardDescription>
+  </CardHeader>
+  <CardContent>
+    {loading ? (
+      <p className="text-muted-foreground">Loading companies...</p>
+    ) : (
+      <div className="flex flex-wrap gap-2">
+        {companies.map((company, index) => (
+          <Link
+            key={index}
+            href={`/practice/companies/${encodeURIComponent(company)}`}
+          >
+            <Badge
+              variant="outline"
+              className="px-3 py-1 cursor-pointer hover:bg-accent transition-colors"
+            >
+              {company}
+            </Badge>
+          </Link>
+        ))}
+      </div>
+    )}
+  </CardContent>
+</Card>
       </div>
     </DashboardLayout>
   )

@@ -39,6 +39,7 @@ const navigation = [
   { name: "Code Playground", href: "/playground", icon: Terminal },
   { name: "Aptitude", href: "/aptitude", icon: Calculator },
   { name: "Mock Interview", href: "/interview", icon: Users },
+  { name: "Prepleet", href: "/codepractice", icon: User },
   { name: "Profile", href: "/profile", icon: User },
 ]
 
