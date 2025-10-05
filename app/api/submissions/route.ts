@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { validateSession } from '@/lib/auth'
-import { getDatabase } from '@/lib/mongodb'
+import { getDatabase } from '@/lib/dbConnect'
 import { CodeSubmission } from '@/lib/models/User'
 
 export async function POST(request: NextRequest) {
