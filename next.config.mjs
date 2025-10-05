@@ -17,13 +17,13 @@ const nextConfig = {
       '@/hooks': path.resolve(__dirname, 'hooks'),
       '@': path.resolve(__dirname),
     }
-    
+
     // Ensure proper module resolution
     config.resolve.modules = [
       path.resolve(__dirname),
       'node_modules'
     ]
-    
+
     return config
   },
   env: {
