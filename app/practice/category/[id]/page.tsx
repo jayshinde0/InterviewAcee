@@ -97,12 +97,18 @@ export default function CategoryPage() {
 
   const fetchSubmissionHistory = async (problemId: string) => {
     const userId = user?._id?.toString() || user?.email
-    if (!userId || submissionHistory[problemId]) return submissionHistory[problemId]
+    if (!userId) return []
+    
+    // Return cached history if it exists and is an array
+    if (submissionHistory[problemId] && Array.isArray(submissionHistory[problemId])) {
+      return submissionHistory[problemId]
+    }
     
     try {
       const history = await getCodingHistory(problemId)
-      setSubmissionHistory(prev => ({ ...prev, [problemId]: history }))
-      return history
+      const historyArray = Array.isArray(history) ? history : []
+      setSubmissionHistory(prev => ({ ...prev, [problemId]: historyArray }))
+      return historyArray
     } catch (error) {
       console.error('Error fetching submission history:', error)
       return []
@@ -153,9 +159,10 @@ export default function CategoryPage() {
       setLoading(true)
       try {
         const historyData = await fetchSubmissionHistory(problemId)
-        setHistory(historyData)
+        setHistory(Array.isArray(historyData) ? historyData : [])
       } catch (error) {
         console.error('Error loading history:', error)
+        setHistory([])
       } finally {
         setLoading(false)
       }
@@ -181,13 +188,13 @@ export default function CategoryPage() {
               <div className="flex items-center justify-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
               </div>
-            ) : history.length === 0 ? (
+            ) : !Array.isArray(history) || history.length === 0 ? (
               <div className="text-center py-8 text-muted-foreground">
                 No submissions found for this problem
               </div>
             ) : (
               <div className="space-y-4">
-                {history.map((submission, index) => (
+                {Array.isArray(history) && history.map((submission, index) => (
                   <div key={submission._id || index} className="border rounded-lg p-4 space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
