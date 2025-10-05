@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
 
       // Convert MongoDB problems to the format expected by the frontend
       problems = mongoProblems.map(problem => ({
-        id: parseInt(problem._id),
+        id: parseInt(problem._id.toString().slice(-1)),
         title: problem.title,
         category: 'Array', // Default for now
         difficulty: problem.difficultyLevel === 'easy' ? 'Easy' : 

@@ -5,12 +5,17 @@ export async function GET() {
   try {
     const health = await checkDatabaseHealth()
     
-    return NextResponse.json({
+    const response: any = {
       status: health.healthy ? 'healthy' : 'unhealthy',
       message: health.message,
-      timestamp: new Date().toISOString(),
-      ...(health.error && { error: health.error.message })
-    }, {
+      timestamp: new Date().toISOString()
+    }
+    
+    if (health.error) {
+      response.error = health.error instanceof Error ? health.error.message : 'Unknown error'
+    }
+    
+    return NextResponse.json(response, {
       status: health.healthy ? 200 : 503
     })
   } catch (error) {

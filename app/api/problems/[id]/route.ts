@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getDatabase } from '@/lib/database/connection'
 import { Collections } from '@/lib/database/models'
+import { ObjectId } from 'mongodb'
 import fs from 'fs'
 import path from 'path'
 

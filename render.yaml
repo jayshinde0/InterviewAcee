@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: interviewace
+    env: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        fromDatabase:
+          name: mongodb
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NEXTAUTH_SECRET
+        generateValue: true
+      - key: NEXTAUTH_URL
+        value: https://interviewace.onrender.com
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: JUDGE0_API_URL
+        value: https://judge0-ce.p.rapidapi.com
+      - key: JUDGE0_API_KEY
+        sync: false

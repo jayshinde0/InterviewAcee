@@ -50,11 +50,15 @@ export async function PUT(request: NextRequest) {
       linkedin: body.linkedin || "",
       profilePhoto: body.profilePhoto || "",
       createdAt: user.createdAt || new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      status: user.status || 'active' as const,
+      profileCompleteness: 0, // Will be calculated below
+      achievements: user.achievements || []
     }
 
     // Calculate profile completeness based on refined schema
     const profileCompleteness = calculateProfileCompleteness(refinedUser)
+    refinedUser.profileCompleteness = profileCompleteness
 
     // Replace the entire user document with refined schema (prunes old fields)
     const result = await users.replaceOne(

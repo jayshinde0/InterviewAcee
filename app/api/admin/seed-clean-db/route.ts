@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server'
 import { getDatabase } from '@/lib/database/connection'
 import { Collections } from '@/lib/database/models'
+import { ObjectId } from 'mongodb'
 
 // Essential problems data (from your JSON files)
 const ESSENTIAL_PROBLEMS = [
   {
-    _id: '1',
+    _id: new ObjectId('000000000000000000000001'),
     categoryId: 'arrays',
     title: 'Remove Duplicates from Sorted Array',
     description: 'Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once.',
@@ -20,7 +21,7 @@ const ESSENTIAL_PROBLEMS = [
     createdAt: new Date()
   },
   {
-    _id: '2',
+    _id: new ObjectId('000000000000000000000002'),
     categoryId: 'arrays',
     title: 'Two Sum',
     description: 'Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.',
@@ -38,7 +39,7 @@ const ESSENTIAL_PROBLEMS = [
     createdAt: new Date()
   },
   {
-    _id: '3',
+    _id: new ObjectId('000000000000000000000003'),
     categoryId: 'arrays',
     title: 'Contains Duplicate',
     description: 'Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.',
@@ -56,7 +57,7 @@ const ESSENTIAL_PROBLEMS = [
     createdAt: new Date()
   },
   {
-    _id: '4',
+    _id: new ObjectId('000000000000000000000004'),
     categoryId: 'arrays',
     title: 'Move Zeroes',
     description: 'Given an integer array nums, move all 0\'s to the end of it while maintaining the relative order of the non-zero elements.',
@@ -74,7 +75,7 @@ const ESSENTIAL_PROBLEMS = [
     createdAt: new Date()
   },
   {
-    _id: '5',
+    _id: new ObjectId('000000000000000000000005'),
     categoryId: 'arrays',
     title: 'Intersection of Two Arrays II',
     description: 'Given two integer arrays nums1 and nums2, return an array of their intersection.',

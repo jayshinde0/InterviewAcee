@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server'
 import { getDatabase } from '@/lib/database/connection'
 import { Collections } from '@/lib/database/models'
+import { ObjectId } from 'mongodb'
 
 export async function GET() {
   try {
     const db = await getDatabase()
-    const problem = await db.collection(Collections.CODING_PROBLEMS).findOne({ _id: '2' })
+    const problem = await db.collection(Collections.CODING_PROBLEMS).findOne({ _id: new ObjectId('000000000000000000000002') })
     
     return NextResponse.json({
       success: true,

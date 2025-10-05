@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getDatabase } from '@/lib/database/connection'
 import { Collections } from '@/lib/database/models'
+import { ObjectId } from 'mongodb'
 
 export async function POST(request: NextRequest) {
   try {
@@ -364,9 +365,15 @@ export async function POST(request: NextRequest) {
 
     // Insert problems
     for (const problem of sampleProblems) {
+      // Convert string ID to ObjectId for MongoDB
+      const problemWithObjectId = {
+        ...problem,
+        _id: new ObjectId(`00000000000000000000000${problem._id}`)
+      }
+      
       await db.collection(Collections.CODING_PROBLEMS).updateOne(
-        { _id: problem._id },
-        { $setOnInsert: problem },
+        { _id: problemWithObjectId._id },
+        { $setOnInsert: problemWithObjectId },
         { upsert: true }
       )
     }
