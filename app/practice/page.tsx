@@ -16,14 +16,26 @@ import { useProgress } from "@/hooks/use-progress"
 export default function PracticeOverviewPage() {
   const { user } = useAuth()
   const { stats: progressStats, loading } = useProgress()
-  const categories = getCategories()
-  const categoryStats = getCategoryStats()
-  const overallStats = getOverallStats()
+  const [categories, setCategories] = useState<any[]>([])
+  const [categoryStats, setCategoryStats] = useState<any[]>([])
+  const [overallStats, setOverallStats] = useState<any>({})
   const [searchQuery, setSearchQuery] = useState("")
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
+    // Load data safely on client side
+    try {
+      setCategories(getCategories())
+      setCategoryStats(getCategoryStats())
+      setOverallStats(getOverallStats())
+    } catch (error) {
+      console.error('Error loading practice data:', error)
+      // Set fallback data
+      setCategories([])
+      setCategoryStats([])
+      setOverallStats({})
+    }
   }, [])
   
   // Default stats to prevent hydration mismatch

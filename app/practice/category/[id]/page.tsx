@@ -16,7 +16,7 @@ import { useAuth } from "@/contexts/auth-context"
 import { useProgress } from "@/hooks/use-progress"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { History, Clock, CheckCircle, XCircle } from "lucide-react"
+import { History, Clock, CheckCircle, XCircle, Trash2, RefreshCw } from "lucide-react"
 
 function DifficultyBadge({ level }: { level: "Easy" | "Medium" | "Hard" }) {
   const color = level === "Easy" ? "bg-emerald-500/15 text-emerald-400" : level === "Medium" ? "bg-amber-500/15 text-amber-400" : "bg-rose-500/15 text-rose-400"
@@ -101,12 +101,27 @@ export default function CategoryPage() {
     
     // Return cached history if it exists and is an array
     if (submissionHistory[problemId] && Array.isArray(submissionHistory[problemId])) {
+      console.log('Returning cached history for problem', problemId, submissionHistory[problemId])
       return submissionHistory[problemId]
     }
     
     try {
-      const history = await getCodingHistory(problemId)
+      console.log('Fetching submission history for problem:', problemId, 'user:', userId)
+      
+      // Call submissions API directly
+      const response = await fetch(`/api/submissions?problemId=${problemId}`)
+      if (!response.ok) {
+        console.error('Submissions API response not ok:', response.status, response.statusText)
+        return []
+      }
+      
+      const data = await response.json()
+      console.log('Submissions API response:', data)
+      
+      const history = data.submissions || data.history || []
       const historyArray = Array.isArray(history) ? history : []
+      
+      console.log('Processed history array:', historyArray)
       setSubmissionHistory(prev => ({ ...prev, [problemId]: historyArray }))
       return historyArray
     } catch (error) {
@@ -154,17 +169,48 @@ export default function CategoryPage() {
   const SubmissionHistory = ({ problemId }: { problemId: string }) => {
     const [history, setHistory] = useState<any[]>([])
     const [loading, setLoading] = useState(false)
+    const [deleting, setDeleting] = useState<string | null>(null)
 
     const loadHistory = async () => {
       setLoading(true)
       try {
         const historyData = await fetchSubmissionHistory(problemId)
+        console.log('Loaded history data:', historyData)
         setHistory(Array.isArray(historyData) ? historyData : [])
       } catch (error) {
         console.error('Error loading history:', error)
         setHistory([])
       } finally {
         setLoading(false)
+      }
+    }
+
+    const deleteSubmission = async (submissionId: string) => {
+      if (!confirm('Are you sure you want to delete this submission?')) return
+      
+      setDeleting(submissionId)
+      try {
+        const response = await fetch(`/api/submissions/${submissionId}`, {
+          method: 'DELETE'
+        })
+        
+        if (response.ok) {
+          // Remove from local state
+          setHistory(prev => prev.filter(sub => sub._id !== submissionId))
+          // Also remove from cache
+          setSubmissionHistory(prev => ({
+            ...prev,
+            [problemId]: prev[problemId]?.filter(sub => sub._id !== submissionId) || []
+          }))
+        } else {
+          console.error('Failed to delete submission')
+          alert('Failed to delete submission')
+        }
+      } catch (error) {
+        console.error('Error deleting submission:', error)
+        alert('Error deleting submission')
+      } finally {
+        setDeleting(null)
       }
     }
 
@@ -178,10 +224,27 @@ export default function CategoryPage() {
         </DialogTrigger>
         <DialogContent className="max-w-4xl max-h-[80vh]">
           <DialogHeader>
-            <DialogTitle>Submission History</DialogTitle>
-            <DialogDescription>
-              All submissions for this problem
-            </DialogDescription>
+            <div className="flex items-center justify-between">
+              <div>
+                <DialogTitle>Submission History</DialogTitle>
+                <DialogDescription>
+                  All submissions for this problem
+                </DialogDescription>
+              </div>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={loadHistory}
+                disabled={loading}
+              >
+                {loading ? (
+                  <RefreshCw className="h-4 w-4 animate-spin" />
+                ) : (
+                  <RefreshCw className="h-4 w-4" />
+                )}
+                Refresh
+              </Button>
+            </div>
           </DialogHeader>
           <ScrollArea className="h-[60vh]">
             {loading ? (
@@ -213,13 +276,28 @@ export default function CategoryPage() {
                           </div>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <div className="text-sm font-medium">
-                          {submission.testCasesPassed}/{submission.totalTestCases} tests passed
+                      <div className="flex items-center gap-3">
+                        <div className="text-right">
+                          <div className="text-sm font-medium">
+                            {submission.testCasesPassed || 0}/{submission.totalTestCases || 0} tests passed
+                          </div>
+                          <div className="text-xs text-muted-foreground">
+                            {submission.programmingLanguage?.toUpperCase() || submission.language?.toUpperCase() || 'N/A'}
+                          </div>
                         </div>
-                        <div className="text-xs text-muted-foreground">
-                          {submission.programmingLanguage?.toUpperCase()}
-                        </div>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => deleteSubmission(submission._id)}
+                          disabled={deleting === submission._id}
+                          className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                        >
+                          {deleting === submission._id ? (
+                            <RefreshCw className="h-3 w-3 animate-spin" />
+                          ) : (
+                            <Trash2 className="h-3 w-3" />
+                          )}
+                        </Button>
                       </div>
                     </div>
                     
@@ -234,11 +312,11 @@ export default function CategoryPage() {
                     
                     <details className="group">
                       <summary className="cursor-pointer text-sm font-medium text-primary hover:underline">
-                        View Code
+                        View Code ({(submission.sourceCode || submission.code || '').length} characters)
                       </summary>
                       <div className="mt-2 p-3 bg-muted rounded border">
-                        <pre className="text-xs overflow-x-auto">
-                          <code>{submission.sourceCode}</code>
+                        <pre className="text-xs overflow-x-auto whitespace-pre-wrap">
+                          <code>{submission.sourceCode || submission.code || 'No code available'}</code>
                         </pre>
                       </div>
                     </details>

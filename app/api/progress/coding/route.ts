@@ -45,39 +45,26 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // Get user session to validate
-    const sessionToken = request.cookies.get('session')?.value
-    if (!sessionToken) {
-      return NextResponse.json({ history: [] })
-    }
-
-    const user = await validateSession(sessionToken)
-    if (!user) {
-      return NextResponse.json({ history: [] })
-    }
-
-    // Query submissions directly from database
-    const db = await getDatabase()
-    const submissions = db.collection<CodeSubmission>('codeSubmissions')
-
-    const query: any = { 
-      $or: [
-        { userId: user._id },
-        { userId: userId } // Also check by email/string userId
-      ]
-    }
-    
+    // Forward to submissions API
+    const submissionsUrl = new URL('/api/submissions', request.url)
     if (problemId) {
-      query.problemId = parseInt(problemId)
+      submissionsUrl.searchParams.set('problemId', problemId)
     }
 
-    const userSubmissions = await submissions
-      .find(query)
-      .sort({ submittedAt: -1 })
-      .limit(50)
-      .toArray()
+    const submissionsResponse = await fetch(submissionsUrl.toString(), {
+      headers: {
+        'Cookie': request.headers.get('Cookie') || ''
+      }
+    })
 
-    return NextResponse.json({ history: userSubmissions })
+    if (!submissionsResponse.ok) {
+      return NextResponse.json({ history: [] })
+    }
+
+    const data = await submissionsResponse.json()
+    return NextResponse.json({ 
+      history: data.submissions || data.history || []
+    })
   } catch (error) {
     console.error('Error fetching coding submission history:', error)
     return NextResponse.json({ history: [] })
