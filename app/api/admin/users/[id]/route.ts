@@ -29,7 +29,7 @@ export async function GET(
     const usersCollection = db.collection('users')
 
     const targetUser = await usersCollection.findOne(
-      { _id: new ObjectId(id) },
+      { _id: new ObjectId(id) } as any,
       { projection: { password: 0 } }
     )
 
@@ -91,7 +91,7 @@ export async function PUT(
     updateFields.updatedAt = new Date()
 
     const result = await usersCollection.updateOne(
-      { _id: new ObjectId(id) },
+      { _id: new ObjectId(id) } as any,
       { $set: updateFields }
     )
 

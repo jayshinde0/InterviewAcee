@@ -93,7 +93,7 @@ export async function DELETE(request: NextRequest) {
 
     const result = await usersCollection.deleteOne({
       _id: new ObjectId(userId)
-    })
+    } as any)
 
     if (result.deletedCount === 0) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 })

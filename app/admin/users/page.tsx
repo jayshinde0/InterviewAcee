@@ -11,12 +11,12 @@ import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DashboardLayout } from "@/components/dashboard-layout"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { 
-  Users, 
-  Search, 
-  Edit, 
-  Trash2, 
-  RefreshCw, 
+import {
+  Users,
+  Search,
+  Edit,
+  Trash2,
+  RefreshCw,
   UserPlus,
   Mail,
   MapPin,
@@ -57,7 +57,9 @@ export default function UserManagementPage() {
   const [pagination, setPagination] = useState({
     currentPage: 1,
     totalPages: 1,
-    totalUsers: 0
+    totalUsers: 0,
+    hasNext: false,
+    hasPrev: false
   })
 
   const [editForm, setEditForm] = useState({
@@ -83,7 +85,7 @@ export default function UserManagementPage() {
       const params = new URLSearchParams()
       if (searchQuery) params.append('search', searchQuery)
       params.append('page', pagination.currentPage.toString())
-      
+
       const response = await fetch(`/api/admin/users?${params}`)
       if (response.ok) {
         const data = await response.json()
@@ -350,9 +352,9 @@ export default function UserManagementPage() {
                       <Button size="sm" variant="outline" onClick={() => handleEdit(user)}>
                         <Edit className="h-3 w-3" />
                       </Button>
-                      <Button 
-                        size="sm" 
-                        variant="outline" 
+                      <Button
+                        size="sm"
+                        variant="outline"
                         onClick={() => handleDelete(user._id, `${user.firstName} ${user.lastName}`)}
                         className="text-red-600 hover:text-red-700 hover:bg-red-50"
                       >
@@ -404,7 +406,7 @@ export default function UserManagementPage() {
                   <Label>First Name</Label>
                   <Input
                     value={editForm.firstName}
-                    onChange={(e) => setEditForm({...editForm, firstName: e.target.value})}
+                    onChange={(e) => setEditForm({ ...editForm, firstName: e.target.value })}
                     required
                   />
                 </div>
@@ -412,18 +414,18 @@ export default function UserManagementPage() {
                   <Label>Last Name</Label>
                   <Input
                     value={editForm.lastName}
-                    onChange={(e) => setEditForm({...editForm, lastName: e.target.value})}
+                    onChange={(e) => setEditForm({ ...editForm, lastName: e.target.value })}
                     required
                   />
                 </div>
               </div>
-              
+
               <div>
                 <Label>Email</Label>
                 <Input
                   type="email"
                   value={editForm.email}
-                  onChange={(e) => setEditForm({...editForm, email: e.target.value})}
+                  onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
                   required
                 />
               </div>
@@ -432,7 +434,7 @@ export default function UserManagementPage() {
                 <Label>Bio</Label>
                 <Textarea
                   value={editForm.bio}
-                  onChange={(e) => setEditForm({...editForm, bio: e.target.value})}
+                  onChange={(e) => setEditForm({ ...editForm, bio: e.target.value })}
                   placeholder="User bio..."
                 />
               </div>
@@ -442,7 +444,7 @@ export default function UserManagementPage() {
                   <Label>Location</Label>
                   <Input
                     value={editForm.location}
-                    onChange={(e) => setEditForm({...editForm, location: e.target.value})}
+                    onChange={(e) => setEditForm({ ...editForm, location: e.target.value })}
                     placeholder="City, Country"
                   />
                 </div>
@@ -450,7 +452,7 @@ export default function UserManagementPage() {
                   <Label>Website</Label>
                   <Input
                     value={editForm.website}
-                    onChange={(e) => setEditForm({...editForm, website: e.target.value})}
+                    onChange={(e) => setEditForm({ ...editForm, website: e.target.value })}
                     placeholder="https://..."
                   />
                 </div>
@@ -461,7 +463,7 @@ export default function UserManagementPage() {
                   <Label>GitHub</Label>
                   <Input
                     value={editForm.github}
-                    onChange={(e) => setEditForm({...editForm, github: e.target.value})}
+                    onChange={(e) => setEditForm({ ...editForm, github: e.target.value })}
                     placeholder="username"
                   />
                 </div>
@@ -469,7 +471,7 @@ export default function UserManagementPage() {
                   <Label>LinkedIn</Label>
                   <Input
                     value={editForm.linkedin}
-                    onChange={(e) => setEditForm({...editForm, linkedin: e.target.value})}
+                    onChange={(e) => setEditForm({ ...editForm, linkedin: e.target.value })}
                     placeholder="profile-url"
                   />
                 </div>
@@ -478,7 +480,7 @@ export default function UserManagementPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label>Status</Label>
-                  <Select value={editForm.status} onValueChange={(value) => setEditForm({...editForm, status: value})}>
+                  <Select value={editForm.status} onValueChange={(value: string) => setEditForm({ ...editForm, status: value })}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
@@ -491,7 +493,7 @@ export default function UserManagementPage() {
                 </div>
                 <div>
                   <Label>Role</Label>
-                  <Select value={editForm.role} onValueChange={(value) => setEditForm({...editForm, role: value})}>
+                  <Select value={editForm.role} onValueChange={(value: string) => setEditForm({ ...editForm, role: value })}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>

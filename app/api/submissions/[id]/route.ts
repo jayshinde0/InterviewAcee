@@ -190,7 +190,7 @@ export async function DELETE(
         debug: {
           submissionExists: !!existingSubmission,
           userMatch: existingSubmission ? 
-            (existingSubmission.userId === user._id?.toString() || existingSubmission.userId === user.email) : 
+            (existingSubmission.userId?.toString() === user._id?.toString() || existingSubmission.userId?.toString() === user.email) : 
             false
         }
       }, { status: 404 })

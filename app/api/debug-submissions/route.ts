@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
       .toArray()
 
     // Get submissions for specific problem if provided
-    let problemSubmissions = []
+    let problemSubmissions: any[] = []
     if (problemId) {
       problemSubmissions = await submissions
         .find({

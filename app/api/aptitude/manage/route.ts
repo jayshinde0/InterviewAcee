@@ -170,7 +170,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const result = await questionsCollection.updateOne(
-      { _id: new ObjectId(questionId) },
+      { _id: new ObjectId(questionId) } as any,
       { $set: updateData }
     )
 
@@ -213,7 +213,7 @@ export async function DELETE(request: NextRequest) {
 
     const result = await questionsCollection.deleteOne({
       _id: new ObjectId(questionId)
-    })
+    } as any)
 
     if (result.deletedCount === 0) {
       return NextResponse.json({ error: 'Question not found' }, { status: 404 })

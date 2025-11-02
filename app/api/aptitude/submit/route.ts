@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     // Get all questions for validation
     const questionIds = answers.map(a => new ObjectId(a.questionId))
     const questions = await questionsCollection
-      .find({ _id: { $in: questionIds } })
+      .find({ _id: { $in: questionIds } } as any)
       .toArray()
 
     // Create a map for quick lookup

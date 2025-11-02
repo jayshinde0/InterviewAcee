@@ -107,7 +107,7 @@ export async function authenticateUser(email: string, password: string): Promise
 export async function getUserById(userId: string): Promise<User | null> {
   // Only connect to database when this function is called
   const db = await getDatabase()
-  return db.collection<User>('users').findOne({ _id: new ObjectId(userId) })
+  return db.collection<User>('users').findOne({ _id: new ObjectId(userId) } as any)
 }
 
 export async function createSession(userId: string, ipAddress?: string, userAgent?: string): Promise<string> {

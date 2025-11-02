@@ -123,7 +123,7 @@ export async function GET(request: NextRequest) {
     console.log(`Found ${userSubmissions.length} submissions for user ${user.email}`)
     
     // Debug: Let's also check what's actually in the database
-    const allSubmissions = await submissions.find({ problemId: { $in: [parseInt(problemId || "0"), problemId] } }).toArray()
+    const allSubmissions = problemId ? await submissions.find({ problemId: { $in: [parseInt(problemId), problemId] } } as any).toArray() : []
     console.log(`Total submissions in DB for problemId ${problemId}:`, allSubmissions.length)
     if (allSubmissions.length > 0) {
       console.log('Sample submission userId:', allSubmissions[0].userId)
@@ -173,7 +173,7 @@ export async function DELETE(request: NextRequest) {
         { userId: user._id },
         { userId: user.email as any }
       ]
-    })
+    } as any)
 
     if (result.deletedCount === 0) {
       return NextResponse.json({ error: 'Submission not found or unauthorized' }, { status: 404 })
