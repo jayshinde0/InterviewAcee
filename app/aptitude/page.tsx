@@ -112,6 +112,13 @@ export default function AptitudePage() {
                 className="pl-10 w-64"
               />
             </div>
+            <Button 
+              variant="outline" 
+              onClick={() => router.push('/admin/aptitude')}
+              className="whitespace-nowrap"
+            >
+              Manage Questions
+            </Button>
           </div>
         </div>
 

@@ -41,6 +41,8 @@ const navigation = [
   { name: "Aptitude", href: "/aptitude", icon: Calculator },
   { name: "Mock Interview", href: "/interview", icon: Users },
   { name: "Profile", href: "/profile", icon: User },
+  { name: "Admin Panel", href: "/admin/aptitude", icon: Settings },
+  { name: "User Management", href: "/admin/users", icon: Users },
 ]
 
 interface DashboardLayoutProps {

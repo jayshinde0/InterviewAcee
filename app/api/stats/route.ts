@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
     const [userProgress, aptitudeProgress, submissions] = await Promise.all([
       db.collection<UserProgress>('userProgress').find({ userId: user._id }).toArray(),
       db.collection<AptitudeProgress>('aptitudeProgress').find({ userId: user._id }).toArray(),
-      db.collection<CodeSubmission>('codeSubmissions').find({ userId: user._id }).sort({ submittedAt: -1 }).limit(10).toArray()
+      db.collection<CodeSubmission>('userCodingSubmissionsStorage').find({ userId: user._id }).sort({ submittedAt: -1 }).limit(10).toArray()
     ])
 
     // Calculate coding stats

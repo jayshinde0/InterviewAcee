@@ -95,12 +95,12 @@ export default function CategoryPage() {
     }
   }
 
-  const fetchSubmissionHistory = async (problemId: string) => {
+  const fetchSubmissionHistory = async (problemId: string, forceRefresh = false) => {
     const userId = user?._id?.toString() || user?.email
     if (!userId) return []
     
-    // Return cached history if it exists and is an array
-    if (submissionHistory[problemId] && Array.isArray(submissionHistory[problemId])) {
+    // Return cached history if it exists and is an array (unless force refresh)
+    if (!forceRefresh && submissionHistory[problemId] && Array.isArray(submissionHistory[problemId])) {
       console.log('Returning cached history for problem', problemId, submissionHistory[problemId])
       return submissionHistory[problemId]
     }
@@ -109,6 +109,7 @@ export default function CategoryPage() {
       console.log('Fetching submission history for problem:', problemId, 'user:', userId)
       
       // Call submissions API directly
+      console.log('Making fresh API call at:', new Date().toISOString())
       const response = await fetch(`/api/submissions?problemId=${problemId}`)
       if (!response.ok) {
         console.error('Submissions API response not ok:', response.status, response.statusText)
@@ -174,9 +175,36 @@ export default function CategoryPage() {
     const loadHistory = async () => {
       setLoading(true)
       try {
-        const historyData = await fetchSubmissionHistory(problemId)
+        const historyData = await fetchSubmissionHistory(problemId, true) // Force refresh
         console.log('Loaded history data:', historyData)
-        setHistory(Array.isArray(historyData) ? historyData : [])
+        
+        // Temporary test data to verify UI works
+        if (!historyData || historyData.length === 0) {
+          console.log('No data found, testing with mock data')
+          // Generate a valid ObjectId-like string (24 hex characters)
+          const generateMockObjectId = () => {
+            return Math.random().toString(16).substring(2, 10) + 
+                   Math.random().toString(16).substring(2, 10) + 
+                   Math.random().toString(16).substring(2, 10)
+          }
+          
+          const mockData = [{
+            _id: generateMockObjectId(),
+            problemId: problemId,
+            status: 'accepted',
+            programmingLanguage: 'cpp',
+            sourceCode: 'test code',
+            submittedAt: new Date().toISOString(),
+            testCasesPassed: 5,
+            totalTestCases: 5,
+            executionTimeMs: 100,
+            memoryUsedKb: 1000,
+            isMockData: true // Flag to identify mock data
+          }]
+          setHistory(mockData)
+        } else {
+          setHistory(Array.isArray(historyData) ? historyData : [])
+        }
       } catch (error) {
         console.error('Error loading history:', error)
         setHistory([])
@@ -190,9 +218,29 @@ export default function CategoryPage() {
       
       setDeleting(submissionId)
       try {
+        console.log('Deleting submission:', submissionId)
+        
+        // Check if this is mock data
+        const submission = history.find(sub => sub._id === submissionId)
+        if (submission && (submission as any).isMockData) {
+          console.log('Deleting mock data locally')
+          // Handle mock data deletion locally
+          setHistory(prev => prev.filter(sub => sub._id !== submissionId))
+          setSubmissionHistory(prev => ({
+            ...prev,
+            [problemId]: prev[problemId]?.filter(sub => sub._id !== submissionId) || []
+          }))
+          alert('Mock submission deleted successfully!')
+          return
+        }
+        
+        // For real data, make API call
         const response = await fetch(`/api/submissions/${submissionId}`, {
           method: 'DELETE'
         })
+        
+        const data = await response.json()
+        console.log('Delete response:', data)
         
         if (response.ok) {
           // Remove from local state
@@ -202,13 +250,20 @@ export default function CategoryPage() {
             ...prev,
             [problemId]: prev[problemId]?.filter(sub => sub._id !== submissionId) || []
           }))
+          alert('Submission deleted successfully!')
         } else {
-          console.error('Failed to delete submission')
-          alert('Failed to delete submission')
+          console.error('Failed to delete submission:', data)
+          if (response.status === 400 && data.error?.includes('Invalid submission ID format')) {
+            alert('Cannot delete this submission: Invalid ID format.')
+          } else if (response.status === 404) {
+            alert('Submission not found. It may have already been deleted.')
+          } else {
+            alert(`Failed to delete submission: ${data.error || 'Unknown error'}`)
+          }
         }
       } catch (error) {
         console.error('Error deleting submission:', error)
-        alert('Error deleting submission')
+        alert(`Error deleting submission: ${error instanceof Error ? error.message : 'Unknown error'}`)
       } finally {
         setDeleting(null)
       }
@@ -231,19 +286,33 @@ export default function CategoryPage() {
                   All submissions for this problem
                 </DialogDescription>
               </div>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={loadHistory}
-                disabled={loading}
-              >
-                {loading ? (
-                  <RefreshCw className="h-4 w-4 animate-spin" />
-                ) : (
-                  <RefreshCw className="h-4 w-4" />
-                )}
-                Refresh
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={loadHistory}
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <RefreshCw className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <RefreshCw className="h-4 w-4" />
+                  )}
+                  Refresh
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={async () => {
+                    const response = await fetch(`/api/debug-submissions?problemId=${problemId}`)
+                    const data = await response.json()
+                    console.log('Debug API response:', data)
+                    alert(`Found ${data.totalSubmissions} total submissions, ${data.problemSubmissions} for this problem. Check console for details.`)
+                  }}
+                >
+                  Debug
+                </Button>
+              </div>
             </div>
           </DialogHeader>
           <ScrollArea className="h-[60vh]">
@@ -267,8 +336,13 @@ export default function CategoryPage() {
                           <XCircle className="h-5 w-5 text-red-500" />
                         )}
                         <div>
-                          <div className="font-medium capitalize">
+                          <div className="font-medium capitalize flex items-center gap-2">
                             {submission.status?.replace('_', ' ') || 'Unknown'}
+                            {(submission as any).isMockData && (
+                              <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
+                                Demo
+                              </span>
+                            )}
                           </div>
                           <div className="text-sm text-muted-foreground flex items-center gap-2">
                             <Clock className="h-3 w-3" />

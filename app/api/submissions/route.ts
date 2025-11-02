@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     } = await request.json()
 
     const db = await getDatabase()
-    const submissions = db.collection<CodeSubmission>('codeSubmissions')
+    const submissions = db.collection<CodeSubmission>('userCodingSubmissionsStorage')
 
     const submission: CodeSubmission = {
       userId: user._id!,
@@ -72,11 +72,11 @@ export async function GET(request: NextRequest) {
 
     const { searchParams } = new URL(request.url)
     const problemId = searchParams.get('problemId')
-    const isPlayground = searchParams.get('isPlayground') === 'true'
+    const isPlayground = searchParams.get('isPlayground')
     const limit = parseInt(searchParams.get('limit') || '50')
 
     const db = await getDatabase()
-    const submissions = db.collection<CodeSubmission>('codeSubmissions')
+    const submissions = db.collection<CodeSubmission>('userCodingSubmissionsStorage')
 
     const query: any = { 
       $or: [
@@ -95,11 +95,24 @@ export async function GET(request: NextRequest) {
         ]
       })
     }
-    if (isPlayground !== undefined) {
-      query.isPlayground = isPlayground
-    }
+    // Temporarily disable isPlayground filter for debugging
+    // if (isPlayground !== null && isPlayground !== undefined) {
+    //   query.$and = query.$and || []
+    //   if (isPlayground === 'false') {
+    //     // Handle both explicit false and undefined (missing field) for non-playground submissions
+    //     query.$and.push({
+    //       $or: [
+    //         { isPlayground: false },
+    //         { isPlayground: { $exists: false } }
+    //       ]
+    //     })
+    //   } else {
+    //     query.$and.push({ isPlayground: isPlayground === 'true' })
+    //   }
+    // }
 
     console.log('Submissions query:', JSON.stringify(query, null, 2))
+    console.log('User object:', { _id: user._id, email: user.email })
     
     const userSubmissions = await submissions
       .find(query)
@@ -108,6 +121,14 @@ export async function GET(request: NextRequest) {
       .toArray()
 
     console.log(`Found ${userSubmissions.length} submissions for user ${user.email}`)
+    
+    // Debug: Let's also check what's actually in the database
+    const allSubmissions = await submissions.find({ problemId: { $in: [parseInt(problemId || "0"), problemId] } }).toArray()
+    console.log(`Total submissions in DB for problemId ${problemId}:`, allSubmissions.length)
+    if (allSubmissions.length > 0) {
+      console.log('Sample submission userId:', allSubmissions[0].userId)
+      console.log('Sample submission problemId:', allSubmissions[0].problemId, typeof allSubmissions[0].problemId)
+    }
     if (problemId) {
       console.log(`Filtered by problemId: ${problemId}`)
     }
@@ -143,7 +164,7 @@ export async function DELETE(request: NextRequest) {
     }
 
     const db = await getDatabase()
-    const submissions = db.collection<CodeSubmission>('codeSubmissions')
+    const submissions = db.collection<CodeSubmission>('userCodingSubmissionsStorage')
 
     // Only allow users to delete their own submissions
     const result = await submissions.deleteOne({
