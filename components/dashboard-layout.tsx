@@ -33,7 +33,7 @@ import { usePathname } from "next/navigation"
 import { useAuth } from "@/contexts/auth-context"
 import { cn } from "@/lib/utils"
 
-const navigation = [
+const baseNavigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { name: "Question Bank", href: "/questions", icon: BookOpen },
   { name: "Code Practice", href: "/practice", icon: Code },
@@ -41,6 +41,9 @@ const navigation = [
   { name: "Aptitude", href: "/aptitude", icon: Calculator },
   { name: "Mock Interview", href: "/interview", icon: Users },
   { name: "Profile", href: "/profile", icon: User },
+]
+
+const adminNavigation = [
   { name: "Admin Panel", href: "/admin/aptitude", icon: Settings },
   { name: "User Management", href: "/admin/users", icon: Users },
 ]
@@ -53,6 +56,12 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const pathname = usePathname()
   const { user, logout } = useAuth()
+
+  // Check if user is admin
+  const isAdmin = user?.role === 'admin' || user?.email === 'jayshinde4554@gmail.com'
+  
+  // Combine navigation based on user role
+  const navigation = isAdmin ? [...baseNavigation, ...adminNavigation] : baseNavigation
 
   const handleLogout = () => {
     logout()

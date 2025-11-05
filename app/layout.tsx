@@ -32,9 +32,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html 
-      lang="en" 
-      className={`dark ${workSans.variable} ${openSans.variable} antialiased`} 
+    <html
+      lang="en"
+      className={`dark ${workSans.variable} ${openSans.variable} antialiased`}
       suppressHydrationWarning
     >
       <body className="font-sans" suppressHydrationWarning>

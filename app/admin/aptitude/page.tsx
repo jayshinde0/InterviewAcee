@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { DashboardLayout } from "@/components/dashboard-layout"
-import { Plus, Edit, Trash2, Search, RefreshCw, BookOpen, Filter, X, Check, AlertCircle } from "lucide-react"
+import { Plus, Edit, Trash2, Search, RefreshCw, BookOpen, Filter, X, Check, AlertCircle, Shield } from "lucide-react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Separator } from "@/components/ui/separator"
 
@@ -32,6 +32,8 @@ export default function AptitudeAdminPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedDifficulty, setSelectedDifficulty] = useState("all")
+  const [isAuthorized, setIsAuthorized] = useState(false)
+  const [authLoading, setAuthLoading] = useState(true)
 
   const categories = [
     { id: 'general', name: 'General Aptitude' },
@@ -39,11 +41,12 @@ export default function AptitudeAdminPage() {
     { id: 'current-affairs', name: 'Current Affairs & GK' },
     { id: 'technical-mcqs', name: 'Technical MCQs' },
     { id: 'interview', name: 'Interview Questions' },
-    { id: 'programming', name: 'Programming Questions' }
+    { id: 'programming', name: 'Programming Questions' },
+    { id: 'dynamic', name: 'Dynamic Questions' }
   ]
 
   const [formData, setFormData] = useState({
-    categoryId: '',
+    categoryId: 'dynamic', // Default to dynamic category
     question: '',
     options: ['', '', '', ''],
     correctAnswer: 0,
@@ -72,8 +75,38 @@ export default function AptitudeAdminPage() {
   }
 
   useEffect(() => {
-    fetchQuestions()
-  }, [selectedCategory, selectedDifficulty, searchQuery])
+    checkAuthorization()
+  }, [])
+
+  useEffect(() => {
+    if (isAuthorized) {
+      fetchQuestions()
+    }
+  }, [selectedCategory, selectedDifficulty, searchQuery, isAuthorized])
+
+  const checkAuthorization = async () => {
+    try {
+      const response = await fetch('/api/auth/me')
+      if (response.ok) {
+        const userData = await response.json()
+        // Check if user is admin or has admin privileges
+        if (userData.user?.role === 'admin' || userData.user?.email === 'jayshinde4554@gmail.com') {
+          setIsAuthorized(true)
+        } else {
+          // Redirect to dashboard if not authorized
+          window.location.href = '/dashboard'
+        }
+      } else {
+        // Redirect to login if not authenticated
+        window.location.href = '/auth/login'
+      }
+    } catch (error) {
+      console.error('Authorization check failed:', error)
+      window.location.href = '/auth/login'
+    } finally {
+      setAuthLoading(false)
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -148,7 +181,7 @@ export default function AptitudeAdminPage() {
   const resetForm = () => {
     setEditingQuestion(null)
     setFormData({
-      categoryId: '',
+      categoryId: 'dynamic', // Default to dynamic category
       question: '',
       options: ['', '', '', ''],
       correctAnswer: 0,
@@ -165,6 +198,38 @@ export default function AptitudeAdminPage() {
       case 'hard': return 'bg-red-100 text-red-800 border-red-200'
       default: return 'bg-gray-100 text-gray-800 border-gray-200'
     }
+  }
+
+  // Show loading while checking authorization
+  if (authLoading) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center space-y-4">
+            <RefreshCw className="h-8 w-8 animate-spin text-primary mx-auto" />
+            <p className="text-muted-foreground">Checking permissions...</p>
+          </div>
+        </div>
+      </DashboardLayout>
+    )
+  }
+
+  // Show unauthorized message if not admin
+  if (!isAuthorized) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center space-y-4">
+            <Shield className="h-12 w-12 text-red-500 mx-auto" />
+            <h2 className="text-2xl font-bold">Access Denied</h2>
+            <p className="text-muted-foreground">You don't have permission to access this page.</p>
+            <Button onClick={() => window.location.href = '/dashboard'}>
+              Go to Dashboard
+            </Button>
+          </div>
+        </div>
+      </DashboardLayout>
+    )
   }
 
   return (

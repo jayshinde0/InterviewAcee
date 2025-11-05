@@ -349,6 +349,14 @@ export async function POST(request: NextRequest) {
                 totalQuestions: 20,
                 timeLimitMinutes: 20,
                 createdAt: new Date()
+            },
+            {
+                categoryId: 'dynamic',
+                name: 'Dynamic Questions',
+                description: 'User-created custom questions',
+                totalQuestions: 0,
+                timeLimitMinutes: 20,
+                createdAt: new Date()
             }
         ]
 

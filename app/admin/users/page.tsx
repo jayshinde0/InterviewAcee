@@ -54,6 +54,8 @@ export default function UserManagementPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [editingUser, setEditingUser] = useState<UserProfile | null>(null)
   const [showEditDialog, setShowEditDialog] = useState(false)
+  const [isAuthorized, setIsAuthorized] = useState(false)
+  const [authLoading, setAuthLoading] = useState(true)
   const [pagination, setPagination] = useState({
     currentPage: 1,
     totalPages: 1,
@@ -76,8 +78,38 @@ export default function UserManagementPage() {
   })
 
   useEffect(() => {
-    fetchUsers()
-  }, [searchQuery, pagination.currentPage])
+    checkAuthorization()
+  }, [])
+
+  useEffect(() => {
+    if (isAuthorized) {
+      fetchUsers()
+    }
+  }, [searchQuery, pagination.currentPage, isAuthorized])
+
+  const checkAuthorization = async () => {
+    try {
+      const response = await fetch('/api/auth/me')
+      if (response.ok) {
+        const userData = await response.json()
+        // Check if user is admin or has admin privileges
+        if (userData.user?.role === 'admin' || userData.user?.email === 'jayshinde4554@gmail.com') {
+          setIsAuthorized(true)
+        } else {
+          // Redirect to dashboard if not authorized
+          window.location.href = '/dashboard'
+        }
+      } else {
+        // Redirect to login if not authenticated
+        window.location.href = '/auth/login'
+      }
+    } catch (error) {
+      console.error('Authorization check failed:', error)
+      window.location.href = '/auth/login'
+    } finally {
+      setAuthLoading(false)
+    }
+  }
 
   const fetchUsers = async () => {
     setLoading(true)
@@ -185,6 +217,38 @@ export default function UserManagementPage() {
       case 'user': return 'bg-gray-100 text-gray-800 border-gray-200'
       default: return 'bg-gray-100 text-gray-800 border-gray-200'
     }
+  }
+
+  // Show loading while checking authorization
+  if (authLoading) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center space-y-4">
+            <RefreshCw className="h-8 w-8 animate-spin text-primary mx-auto" />
+            <p className="text-muted-foreground">Checking permissions...</p>
+          </div>
+        </div>
+      </DashboardLayout>
+    )
+  }
+
+  // Show unauthorized message if not admin
+  if (!isAuthorized) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center space-y-4">
+            <Shield className="h-12 w-12 text-red-500 mx-auto" />
+            <h2 className="text-2xl font-bold">Access Denied</h2>
+            <p className="text-muted-foreground">You don't have permission to access this page.</p>
+            <Button onClick={() => window.location.href = '/dashboard'}>
+              Go to Dashboard
+            </Button>
+          </div>
+        </div>
+      </DashboardLayout>
+    )
   }
 
   return (

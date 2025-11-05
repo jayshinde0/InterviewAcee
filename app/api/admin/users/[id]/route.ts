@@ -21,6 +21,11 @@ export async function GET(
       return NextResponse.json({ error: 'Invalid session' }, { status: 401 })
     }
 
+    // Check if user has admin privileges
+    if (user.role !== 'admin' && user.email !== 'jayshinde4554@gmail.com') {
+      return NextResponse.json({ error: 'Access denied. Admin privileges required.' }, { status: 403 })
+    }
+
     if (!ObjectId.isValid(id)) {
       return NextResponse.json({ error: 'Invalid user ID format' }, { status: 400 })
     }
@@ -60,6 +65,11 @@ export async function PUT(
     const user = await validateSession(sessionToken)
     if (!user) {
       return NextResponse.json({ error: 'Invalid session' }, { status: 401 })
+    }
+
+    // Check if user has admin privileges
+    if (user.role !== 'admin' && user.email !== 'jayshinde4554@gmail.com') {
+      return NextResponse.json({ error: 'Access denied. Admin privileges required.' }, { status: 403 })
     }
 
     if (!ObjectId.isValid(id)) {

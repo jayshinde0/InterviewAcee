@@ -16,6 +16,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid session' }, { status: 401 })
     }
 
+    // Check if user has admin privileges
+    if (user.role !== 'admin' && user.email !== 'jayshinde4554@gmail.com') {
+      return NextResponse.json({ error: 'Access denied. Admin privileges required.' }, { status: 403 })
+    }
+
     const { searchParams } = new URL(request.url)
     const search = searchParams.get('search')
     const page = parseInt(searchParams.get('page') || '1')
@@ -74,6 +79,11 @@ export async function DELETE(request: NextRequest) {
     const user = await validateSession(sessionToken)
     if (!user) {
       return NextResponse.json({ error: 'Invalid session' }, { status: 401 })
+    }
+
+    // Check if user has admin privileges
+    if (user.role !== 'admin' && user.email !== 'jayshinde4554@gmail.com') {
+      return NextResponse.json({ error: 'Access denied. Admin privileges required.' }, { status: 403 })
     }
 
     const { searchParams } = new URL(request.url)

@@ -17,6 +17,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid session' }, { status: 401 })
     }
 
+    // Check if user has admin privileges
+    if (user.role !== 'admin' && user.email !== 'jayshinde4554@gmail.com') {
+      return NextResponse.json({ error: 'Access denied. Admin privileges required.' }, { status: 403 })
+    }
+
     const { searchParams } = new URL(request.url)
     const categoryId = searchParams.get('categoryId')
     const difficulty = searchParams.get('difficulty')
@@ -102,7 +107,7 @@ export async function POST(request: NextRequest) {
     const questionsCollection = db.collection<AptitudeQuestion>('aptitudeQuestions')
 
     const newQuestion: Omit<AptitudeQuestion, '_id'> = {
-      categoryId,
+      categoryId: categoryId || 'dynamic', // Default to dynamic category if not specified
       question: question.trim(),
       options: options.map((opt: string) => opt.trim()),
       correctAnswer,
